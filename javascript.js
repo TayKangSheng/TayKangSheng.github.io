@@ -54,7 +54,7 @@ y = dashBoard.welcomeMessage();
 // Game variables and function here
 
 var GAME = {
-  gameCells : [-1,-1,-1,-1,-1,-1,-1,-1,-1,"x"], 
+  gameCells : [-1,-1,-1,-1,-1,-1,-1,-1,-1], 
   gameValues : [1,2,3,4,5,6,7,8],
 
   randomGenerator : function () {
@@ -71,7 +71,6 @@ var GAME = {
     if (this.gameCells[6]!== "x") document.getElementById("7").innerHTML = this.gameCells[6]; else document.getElementById("7").innerHTML = " ";
     if (this.gameCells[7]!== "x") document.getElementById("8").innerHTML = this.gameCells[7]; else document.getElementById("8").innerHTML = " ";
     if (this.gameCells[8]!== "x") document.getElementById("9").innerHTML = this.gameCells[8]; else document.getElementById("9").innerHTML = " ";
-    if (this.gameCells[9]!== "x") document.getElementById("10").innerHTML = this.gameCells[9]; else document.getElementById("10").innerHTML = " ";
   },
 
   toLeft : function(){
@@ -123,10 +122,6 @@ var GAME = {
           this.gameCells[j] = "x";
         }
       }
-      if (this.gameCells[7]=="x"){
-        this.gameCells[7] = this.gameCells[9];
-        this.gameCells[9] = "x";
-      }
     }
   },
 
@@ -138,10 +133,6 @@ var GAME = {
           this.gameCells[j+3]=this.gameCells[j];
           this.gameCells[j] = "x";
         }
-      }
-      if (this.gameCells[9]=="x"){
-        this.gameCells[9] = this.gameCells[7];
-        this.gameCells[7] = "x";
       }
     }
   },

@@ -6,7 +6,7 @@ body{
 #left {
     float: left;
     width: 700px;
-    height: 933px;
+    height: 700px;
 }
 
 #inner {
@@ -42,8 +42,8 @@ body{
 .cell {
     text-align: center;
     border: 1px dashed black;
-    width: 25%;
-    height: 25%;
+    width: 33%;
+    height: 33%;
     margin-left: auto;
     margin-right: auto;
     margin-top: auto;
