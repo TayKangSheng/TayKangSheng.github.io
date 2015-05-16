@@ -4,8 +4,20 @@
 	<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 	<title>Title</title>
 </head>
-<body>
-	<h3>Hello Kang :)</h1>
+<body class="center">
+	
+	<div id="inner" class="center">
+		<h2>Hi, welcome to Kang's wall! (*^A^*)</h2>
+		
+		<input type="text" value="" class="center, messageInput" id= "inputField"  
+			onkeydown="if (event.keyCode == 13) document.getElementById('submitButton').click()"/> 
+		<button onclick="dashBoard.addMessage()" style="font-family:'consolas';" class="messageInput" id="submitButton">
+			Add message!
+		</button><br>
+		<ul id="messages" class="messages"></ul>
+		
+	</div>
+	
+	<script type="text/javascript" src="javascript.js"></script>
 </body>
-
 </html>
