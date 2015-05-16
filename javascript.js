@@ -54,7 +54,7 @@ y = dashBoard.welcomeMessage();
 // Game variables and function here
 
 var GAME = {
-  gameCells : [-1,-1,-1,-1,-1,-1,-1,-1,-1], 
+  gameCells : [-1,-1,-1,-1,-1,-1,-1,-1,-1,"x"], 
   gameValues : [1,2,3,4,5,6,7,8],
 
   randomGenerator : function () {
@@ -71,11 +71,12 @@ var GAME = {
     if (this.gameCells[6]!== "x") document.getElementById("7").innerHTML = this.gameCells[6]; else document.getElementById("7").innerHTML = " ";
     if (this.gameCells[7]!== "x") document.getElementById("8").innerHTML = this.gameCells[7]; else document.getElementById("8").innerHTML = " ";
     if (this.gameCells[8]!== "x") document.getElementById("9").innerHTML = this.gameCells[8]; else document.getElementById("9").innerHTML = " ";
+    if (this.gameCells[9]!== "x") document.getElementById("10").innerHTML = this.gameCells[9]; else document.getElementById("10").innerHTML = " ";
   },
 
   toLeft : function(){
     console.log("left");
-    for (var i=0 ; i<2 ; i++){
+    for (var i=0 ; i<1 ; i++){
       for (var j=1 ; j<9 ;j+=3){
         if (this.gameCells[j-1]==="x"){
           console.log("found!");
@@ -95,7 +96,7 @@ var GAME = {
 
   toRight : function(){
     console.log("right");
-    for (var i=0 ; i<2 ; i++){
+    for (var i=0 ; i<1 ; i++){
       for (var j=0 ; j<9 ;j=(j+3)){
         if (this.gameCells[j+1]=="x"){
           console.log("found!");
@@ -115,24 +116,32 @@ var GAME = {
 
   up : function(){
     console.log("up");
-    for (var i=0 ; i<2 ; i++){
+    for (var i=0 ; i<1 ; i++){
       for (var j=3 ; j<9 ; j++){
         if (this.gameCells[j-3]=="x"){
           this.gameCells[j-3]=this.gameCells[j];
           this.gameCells[j] = "x";
         }
       }
+      if (this.gameCells[7]=="x"){
+        this.gameCells[7] = this.gameCells[9];
+        this.gameCells[9] = "x";
+      }
     }
   },
 
   down : function(){
     console.log("down");
-    for (var i=0 ; i<3 ; i++){
+    for (var i=0 ; i<1 ; i++){
       for (var j=0 ; j<6 ; j++){
         if (this.gameCells[j+3]=="x"){
           this.gameCells[j+3]=this.gameCells[j];
           this.gameCells[j] = "x";
         }
+      }
+      if (this.gameCells[9]=="x"){
+        this.gameCells[9] = this.gameCells[7];
+        this.gameCells[7] = "x";
       }
     }
   },
@@ -185,7 +194,6 @@ function checkKey(e) {
     GAME.setVariables();
 
 }
-
 
 
 
