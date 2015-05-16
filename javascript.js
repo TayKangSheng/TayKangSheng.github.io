@@ -76,13 +76,6 @@ var GAME = {
   toLeft : function(){
     console.log("left");
     for (var i=0 ; i<1 ; i++){
-      for (var j=1 ; j<9 ;j+=3){
-        if (this.gameCells[j-1]==="x"){
-          console.log("found!");
-          this.gameCells[j-1]=this.gameCells[j];
-          this.gameCells[j] = "x";
-        }
-      }
       for (var k=2 ; k<9 ;k+=3){
         if (this.gameCells[k-1]==="x"){
           console.log("found!");
@@ -90,6 +83,14 @@ var GAME = {
           this.gameCells[k] = "x";
         }
       }
+      for (var j=1 ; j<9 ;j+=3){
+        if (this.gameCells[j-1]==="x"){
+          console.log("found!");
+          this.gameCells[j-1]=this.gameCells[j];
+          this.gameCells[j] = "x";
+        }
+      }
+
     }
   },
 
@@ -116,7 +117,7 @@ var GAME = {
   up : function(){
     console.log("up");
     for (var i=0 ; i<1 ; i++){
-      for (var j=3 ; j<9 ; j++){
+      for (var j=8 ; j>2 ; j--){
         if (this.gameCells[j-3]=="x"){
           this.gameCells[j-3]=this.gameCells[j];
           this.gameCells[j] = "x";
