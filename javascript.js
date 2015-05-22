@@ -1,5 +1,4 @@
 
-
 var dashBoard = {
   hof: document.getElementById("messages"),
   value : document.getElementById("inputField"),
@@ -186,7 +185,3 @@ function checkKey(e) {
     GAME.setVariables();
 
 }
-
-
-
-
