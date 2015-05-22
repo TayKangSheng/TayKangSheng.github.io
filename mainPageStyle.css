@@ -4,13 +4,6 @@ body {
 	max-width: 5000px;
 }
 
-#mainPageImage{
-	width: 100%;
-	height: 700px;
-	background-image: url("mainPage.jpg");
-	background-size: 100%
-}
-
 #mainImage{
 	width: 100%;
 	height: 700px;
@@ -19,4 +12,8 @@ body {
 
 #ImageCredits {
 	text-align: right;
+}
+
+#divBlocks {
+	margin: -1px;
 }
