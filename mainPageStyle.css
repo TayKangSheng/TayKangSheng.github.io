@@ -1,6 +1,7 @@
 body {
 	font-family: consolas;
 	background-color: #F2F2F2;
+	max-width: 5000px;
 }
 
 #mainPageImage{
