@@ -1,0 +1,15 @@
+body {
+	font-family: consolas;
+	background-color: #F2F2F2;
+}
+
+#mainPageImage{
+	width: 100%;
+	height: 700px;
+	background-image: url("mainPage.jpg");
+	background-size: 100%
+}
+
+#ImageCredits {
+	text-align: right;
+}
