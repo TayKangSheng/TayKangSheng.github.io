@@ -1,11 +1,11 @@
 body {
-	font-family: consolas;
 	background-color: #F2F2F2;
 	max-width: 5000px;
+	font-family: "Georgia", Times, serif;
 }
 
 #mainImage{
-	width: 100%;
+	width: 100.15%;
 	height: 800px;
 	margin-bottom: -10px
 }
@@ -17,3 +17,55 @@ body {
 #divBlocks {
 	margin: -3px;
 }
+
+.divCell {
+	border-style: dotted;
+	border-radius: 0px;
+	border-width: 1px;
+	margin-top: 4px;
+	padding: 3px;
+	
+}
+
+#aboutMe {
+	font-size: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
+	float: top;
+	height: 500px;
+
+}
+
+#aboutMeDescription {
+	font-size: 20px;
+}
+
+#centerBlock{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#socials {
+	font-family: Impact;
+	float: top;
+	margin-left: auto;
+	margin-right: auto;
+	float: bottom;
+}
+
+#aboutMeLeft {
+	width: 49.8%;
+	float: left;
+}
+
+#aboutMeRight {
+	width: 49.8%;
+	float: right;
+}
+
+.divCellHeader {
+	background-color: #664100;
+}
+
