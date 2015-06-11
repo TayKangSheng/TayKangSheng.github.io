@@ -1,7 +1,7 @@
 body {
 	background-color: #F2F2F2;
 	max-width: 5000px;
-	font-family: "Georgia", Times, serif;
+	font-family: "Arial Black", Gadget, sans-serif;
 }
 
 #mainImage{
@@ -19,11 +19,12 @@ body {
 }
 
 .divCell {
-	border-style: dotted;
-	border-radius: 0px;
+	/*border-style: dotted;*/
+	border-radius: 10px;
 	border-width: 1px;
 	margin: 4px;
 	padding: 3px;
+	background-color: #FFE4B5;
 
 }
 
@@ -34,11 +35,11 @@ body {
 	width: 100%;
 	float: top;
 	height: 500px;
-
 }
 
 #aboutMeDescription {
 	font-size: 20px;
+	font-family: Impact, Charcoal, sans-serif;
 }
 
 #centerBlock{
@@ -76,8 +77,20 @@ body {
 }
 
 .divCellHeader {
-	font-size: 45px;
-	background-color: #664100;
+	font-size: 30px;
+	background-color: #FFBA42; /*#664100;*/
 	height: 50px;
+	border-radius: 10px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+.CellHeader {
+	position: relative;
+  	top: 50%;
+  	transform: translateY(-50%);
+
+}
+
+.cellContent {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
