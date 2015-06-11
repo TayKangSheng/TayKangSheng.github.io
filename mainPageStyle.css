@@ -20,7 +20,7 @@ body {
 
 .divCell {
 	/*border-style: dotted;*/
-	border-radius: 10px;
+	border-radius: 0px;
 	border-width: 1px;
 	margin: 4px;
 	padding: 3px;
@@ -34,7 +34,7 @@ body {
 	margin-right: auto;
 	width: 100%;
 	float: top;
-	height: 500px;
+	height: 700px;
 }
 
 #aboutMeDescription {
@@ -50,7 +50,7 @@ body {
 
 #socials {
 	font-family: Impact;
-	float: top;
+	/*float: top;*/
 	margin-left: auto;
 	margin-right: auto;
 	float: bottom;
@@ -80,7 +80,7 @@ body {
 	font-size: 30px;
 	background-color: #FFBA42; /*#664100;*/
 	height: 50px;
-	border-radius: 10px;
+	border-radius: 0px;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -93,4 +93,8 @@ body {
 
 .cellContent {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.firstLetter {
+	font-weight: 900;
 }
