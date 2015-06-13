@@ -1,12 +1,15 @@
 body {
 	background-color: #F2F2F2;
 	max-width: 5000px;
-	font-family: "Arial Black", Gadget, sans-serif;
+	font-family: Verdana, Geneva, sans-serif;
+	/*font-family: "Arial Black", Gadget, sans-serif;*/
 }
 
 #mainImage{
 	width: 100.15%;
-	height: 800px;
+	/*height: 800px;*/
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: -10px
 }
 
@@ -38,8 +41,7 @@ body {
 }
 
 #aboutMeDescription {
-	font-size: 20px;
-	font-family: Impact, Charcoal, sans-serif;
+	font-size: medium;
 }
 
 #centerBlock{
