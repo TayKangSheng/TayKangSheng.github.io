@@ -10,6 +10,11 @@
 		.entry{
 			max-width:300px;
 			max-height:300px;
+			
+		}
+		.caption{
+			word-break:  break-all ;
+			overflow: ellipsis;
 		}
 	</style>
 </head>
@@ -37,10 +42,20 @@
 						var image = jsondata[i].images.standard_resolution.url;
 						var caption = jsondata[i].caption.text;
 						var username = jsondata[i].user.username;
-						$('#wall').append("<td> <h4>@"+username+"</h4> <img class='entry' src="+image+"><h5>"+caption+"</h5></td>");
+						$('#wall').append("<td> <h4>@"+username+"</h4> <img class='entry' src="+image+"><hr><span class='caption'>"+caption+"</span></td>");
 					}
 				}
 			});
+
+			var currentTime = Math.floor(new Date().getTime()/1000);
+			while (true){
+				if (currentTime - Math.floor(new Date().getTime()/1000) > 4){
+					currentTime = Math.floor(new Date().getTime()/1000);
+					console.log(currentTime);
+				} else {
+					console.log("waiting");
+				}
+			}
 		});
 	</script>
 </body>
