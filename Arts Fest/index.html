@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ART FEST InstaFeed</title>
+
+</head>
+<body>
+
+	
+
+	<script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		
+		$( document ).ready(function() {
+			$.getJSON('http://cors.io/?u=https://api.instagram.com/v1/tags/morning/media/recent?access_token=469106421.1fb234f.5cca2082788041c1998c828e536eab49',function(data){
+				var jsonData = data.data;
+				// $('body').text(JSON.stringify(jsonData));
+				// console.log(jsonData);
+				for (var i=0; i<jsonData.length ; i++){
+					var link = jsonData[i].link;
+					$('body').append('<p>http://cors.io/?u=http://api.instagram.com/oembed?url='+link+'</p>');
+					$.getJSON('http://cors.io/?u=http://api.instagram.com/oembed?url='+link,function(eachEmbedData){
+							$('body').append('<p>'+eachEmbedData.html+'</p>');
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>
+
+<!-- Secret Access Token: 469106421.d3e98e0.0b4019163427471f8c32a7563e8be444 -->
