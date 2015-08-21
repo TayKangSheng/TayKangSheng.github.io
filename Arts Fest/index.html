@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>ART FEST InstaFeed</title>
+	<title>SUTD InstaFeed</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<script src="http://platform.instagram.com/en_US/embeds.js"></script>
 	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
@@ -15,7 +15,7 @@
 </head>
 <body>
 	<section class="container-fluid">
-	<h2>ART FEST INSTAFEED #artfest</h2>
+	<h2>SUTD INSTAFEED #sutd</h2>
 	<!-- <div id="wall"></div> -->
 	<table class="table">
   		<tr id="wall">
@@ -28,7 +28,7 @@
 			$.ajax({type: 'GET',
 				dataType: 'jsonp',
 				cache: false,
-				url: 'https://api.instagram.com/v1/tags/artfest/media/recent?access_token=469106421.1fb234f.5cca2082788041c1998c828e536eab49',
+				url: 'https://api.instagram.com/v1/tags/sutd/media/recent?access_token=469106421.1fb234f.5cca2082788041c1998c828e536eab49',
 				success: function(data){
 					var jsondata = data.data;
 					for (var i=0 ; i<jsondata.length ; i++){
