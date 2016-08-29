@@ -30,7 +30,7 @@ ul.topnav li a {
     padding: 14px 16px;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 1.5em; 
+    font-size: 300px; 
     /*17px;*/
 }
 
@@ -41,7 +41,7 @@ ul.topnav li a:hover {background-color: #555;}
 ul.topnav li.icon {display: none;}
 
 /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
-@media screen and (max-height:1000px) {
+@media screen and (max-width:680px) {
   ul.topnav li:not(:nth-child(1)) {display: none;}
   ul.topnav li.icon {
     float: right;
@@ -50,7 +50,7 @@ ul.topnav li.icon {display: none;}
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
-@media screen and (max-height:1000px) {
+@media screen and (max-width:680px) {
   ul.topnav.responsive {position: fixed;}
   ul.topnav.responsive li.icon {
     position: absolute;
