@@ -5,7 +5,7 @@ ul.topnav {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #999;
     width: 100%;
     position: fixed;
     top: 0px;
@@ -36,7 +36,7 @@ ul.topnav li a {
 }
 
 /* Change background color of links on hover */
-ul.topnav li a:hover {background-color: #555;}
+ul.topnav li a:hover {background-color: #111;}
 
 /* Hide the list item that contains the link that should open and close the topnav on small screens */
 ul.topnav li.icon {display: none;}
