@@ -5,19 +5,11 @@ ul.topnav {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #999;
+    background-color: #444;
     width: 100%;
     position: fixed;
     top: 0px;
     font-size: 2em; 
-}
-
-/* Logo size */
-ul.topnav img {
-	height : 51px;
-	display: flex;
-	float: left;
-	margin-right: 50px;
 }
 
 /* Float the list items side by side */
