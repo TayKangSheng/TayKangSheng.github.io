@@ -9,6 +9,7 @@ ul.topnav {
     width: 100%;
     position: fixed;
     top: 0px;
+    font-size: 2em; 
 }
 
 /* Logo size */
@@ -30,7 +31,7 @@ ul.topnav li a {
     padding: 14px 16px;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 300px; 
+    /*font-size: 17px; */
     /*17px;*/
 }
 
