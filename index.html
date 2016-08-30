@@ -28,51 +28,69 @@
 			/*float: left;*/
 		}
 
-		p.HomeText {
+		@media screen and (max-width:680px) {
+			img.ProfilePicture { width :50%};
+		}
+
+		div.HomeText {
 			margin-right: 10%;
 			margin-left: 10%;
 			/*background-color: #555;*/
 			text-align: justify;
     		text-justify: auto;
     		font-size: 1.3em;
+    		display: "block";
 		}
+
+		h1 {
+			font-size: 2em;
+		}
+		
+		/*ul.topnav li:not(:nth-child(1)) {display: none;}*/
+		body div:not(#home){display: none;}
 
 	</style>
 </head>
-<body>
-
-	<p id="home">  </p>
-
+<body onload="onload()">
 	<img src="KANG.jpg" class="HomePicture"/>
 
 	<ul class="topnav" id="myTopnav">
 		<!-- <img src="Barakamon-squared.gif" class="topnavlogo"/> -->
-		<li><a href="#">Home</a></li>
-		<li><a href="#blog">Blog</a></li>
-		<li><a href="#contact">Contact</a></li>
+		<li><a href="#" onclick="topnav('home')">About Me</a></li>
+		<li><a href="#blog" onclick="topnav('blog')">Blog</a></li>
+		<li><a href="#contact" onclick="topnav('contact')">Contact</a></li>
 		<!-- <li><a href="#about">About</a></li> -->
 		<li class="icon">
 			<a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
 		</li>
 	</ul>
 	
-	<p class="HomeText">
-		I am a software developer, graduated from Singapore University of Technology and Design with B.eng Information Systems Technology and Design. 
-	</p>
+	<div id="home" class="HomeText">
+		<h1 class="title">ABOUT ME</h1>
+		<p> I am a software developer, graduated from Singapore University of Technology and Design with B.Eng Information Systems Technology and Design (Honors). Generally interested in all things that requires coding, because you never know what little knowledge in different domains might help you in whatever you are doing! </p>
+		
+		<!-- <p class="HomeText">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p> -->
+		<p> So i am still in the process of compiling projects that i have done, therefore this page is still under construction! Past experiences includes: <strong>NodeJS</strong>, <strong>Android</strong>, <strong>Unity</strong>, <strong>Java</strong>, <strong>Python</strong>, <strong>Web Development</strong>. Feel free to drop me an email if you have any cool projects in mind that you want to collaborate on! </p>
 
-	<p class="HomeText">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	</p>
+		<img src="me-squared.gif" class="ProfilePicture">
+	</div>
+
+	<div id="blog" class="HomeText">
+		<h1>Blog</h1>
+		<p>
+			<strong>Under Construction</strong>
+		</p>
+	</div>
+
+	<div id="contact" class="HomeText">
+		<h1>CONTACT</h1>
+		<p>
+			Find me @ <span style="font-weight: bold">kangsheng@gmail.com</span>
+		</p>
+	</div>
 	
-	<p class="HomeText">
-		This is no ordinary love, no ordinary love~ This is no ordinary love, no ordinary love~
-	</p>
-
-	<p id="contact">
-	<img src="me-squared.gif" class="ProfilePicture">
-	</p>
-	
-
 	<script type="text/javascript">
 		/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 		function myFunction() {
@@ -83,6 +101,30 @@
 		        x.className = "topnav";
 		    }
 		}
+
+		function topnav(nav){
+			// console.log("topnav: "+nav);
+			var divs = document.getElementsByTagName('div');
+			for (var i=0 ; i<divs.length; i++){
+				console.log(divs[i].id)
+				if (divs[i].id === nav){
+					divs[i].style.display = "block";
+				} else {
+					divs[i].style.display = "none";
+				}
+			}
+			myFunction();
+		}
+
+		function onload(){
+			var hash = window.location.hash.substring(1);
+			// console.log(hash);
+			if (!hash){
+			} else {
+				topnav(hash);
+			}
+		}
+
 	</script>
 </body>
 </html>

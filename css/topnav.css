@@ -15,6 +15,10 @@ ul.topnav {
 /* Float the list items side by side */
 ul.topnav li {float: left;}
 
+ul.topnav li:first-child {
+	margin-left: 50px;
+}
+
 /* Style the links inside the list items */
 ul.topnav li a {
     display: inline-block;
@@ -35,11 +39,12 @@ ul.topnav li.icon {display: none;}
 
 /* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
 @media screen and (max-width:680px) {
-  ul.topnav li:not(:nth-child(1)) {display: none;}
-  ul.topnav li.icon {
+	ul.topnav li:first-child {margin-left: 0px;}
+  	ul.topnav li:not(:nth-child(1)) {display: none;}
+  	ul.topnav li.icon {
     float: right;
     display: inline-block;
-  }
+  	}
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
