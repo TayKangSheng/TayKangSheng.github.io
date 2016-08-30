@@ -33,12 +33,13 @@
 			var hash = window.location.hash.substring(1);
 			// console.log(hash);
 			if (!hash){
+				topnav("home");
 			} else {
 				topnav(hash);
 			}
 		}
 	</script>
-	
+
 	<style type="text/css">
 	
 		html, body {
@@ -84,7 +85,7 @@
 		}
 		
 		/*ul.topnav li:not(:nth-child(1)) {display: none;}*/
-		body div:not(#home){display: none;}
+		/*body div:not(#home){display: none;}*/
 
 	</style>
 </head>
@@ -113,9 +114,7 @@
 
 	<div id="blog" class="HomeText">
 		<h1>Blog</h1>
-		<p>
-			<strong>Under Construction...</strong>
-		</p>
+		<p>Under Construction...</p>
 	</div>
 
 	<div id="contact" class="HomeText">
