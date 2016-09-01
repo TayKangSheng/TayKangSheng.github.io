@@ -1,3 +1,16 @@
+window.onload = function() {
+	// console.log("onload");
+	var container = document.getElementById("container");
+	// console.log(container);
+	var hash = window.location.hash.substring(1);
+	if (!hash){
+		document.getElementById("container").getElementsByTagName("div")[0].style.display = "inline-block";
+		// document.getElementsByTagName("div")
+	} else{
+		document.getElementById(hash).style.display = "inline-block";
+	}
+}
+
 function myFunction() {
     var x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
@@ -7,24 +20,10 @@ function myFunction() {
     }
 }
 
-function topnav(nav){
-	// console.log("topnav: "+nav);
-	// var divs = document.getElementsByTagName('div');
-	// for (var i=0 ; i<divs.length; i++){
-	// 	if (divs[i].id === nav){
-	// 		divs[i].style.display = "inline-block";
-	// 	} else {
-	// 		divs[i].style.display = "none";
-	// 	}
-	// }	
-}
-
-function onload(){
-	// var hash = window.location.hash.substring(1);
-	// // console.log(hash);
-	// if (!hash){
-	// 	topnav("home");
-	// } else {
-	// 	topnav(hash);
-	// }
+window.onhashchange = hashchange;
+function hashchange(){
+	var divs = document.getElementById("container").getElementsByTagName("div");
+	for (var i=0 ; i<divs.length ; i++){ divs[i].style.display="none"; }
+	var hash = window.location.hash.substring(1);
+	document.getElementById(hash).style.display = "inline-block";
 }

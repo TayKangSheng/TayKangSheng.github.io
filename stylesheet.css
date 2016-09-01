@@ -67,12 +67,30 @@ ul.topnav li.icon {display: none;}
   }
 }
 
+div#container {
+  margin-right: 10%;
+  margin-left: 10%;
+  text-align: justify;
+  text-justify: auto;
+  font-size: 1em;
+  display: inline-block;
+}
+
+div#container h1 {
+  padding-top: 2em; 
+  margin-top: -2em;
+}
+
+div#container div{
+  display: none;
+}
+
 img#HomePicture {
   width: 80%;
-  /*border-radius: 50%;*/
   display: block;
   margin: auto;
-  margin-top: 3em;
+  margin-top: 4em;
+  margin-bottom: 1em;
   -webkit-filter: contrast(180%);filter: contrast(150%);
 }
 
@@ -86,22 +104,11 @@ img#ProfilePicture {
   margin-bottom: 50px;
 }
 
-@media screen and (max-width:680px) {
-  img.ProfilePicture { width :50%};
+div#container p#footnote{
+  font-size: 0.5em;
 }
 
-div.container {
-  margin-right: 10%;
-  margin-left: 10%;
-  text-align: justify;
-  text-justify: auto;
-  font-size: 1em;
-  display: "inline-block";
-}
 
-h1 {
-  font-size: 1.5em;
-}
 
 /*ul.topnav li:not(:nth-child(1)) {display: none;}*/
 /*body div:not(#home){display: none;}*/
