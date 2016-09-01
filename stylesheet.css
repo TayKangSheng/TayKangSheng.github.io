@@ -115,11 +115,10 @@ div#container p#footnote{
   padding-bottom: 1em;
   font-size: 0.5em;
   color: #111;
-  vertical-align: middle;
 }
 
 div#container img.icons {
-  vertical-align: bottom;
+  vertical-align: middle;
   width: 1.5em;
 }
 
