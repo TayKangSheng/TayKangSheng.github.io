@@ -83,6 +83,7 @@ div#container h1 {
 
 div#container div{
   display: none;
+  font-size: 17px;
 }
 
 img#HomePicture {
