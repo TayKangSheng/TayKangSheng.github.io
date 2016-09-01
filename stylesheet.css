@@ -5,6 +5,7 @@ html, body {
     height:100%;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     font-size: 100%;
+    text-size-adjust: none;
 }
 
 /* Remove margins and padding from the list, and add a black background color */
