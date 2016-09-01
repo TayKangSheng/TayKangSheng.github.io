@@ -75,7 +75,7 @@ div#container {
   text-justify: auto;*/
   font-size: 1em;
   display: inline-block;
-  max-height: 999999px;
+  max-height: 999999px; /* android phones have automatic font-boosting function to increase the size of fonts if text reaches a certain length. By declaring this property, it overwrites the font-boosting function */
 }
 
 div#container h1 {
