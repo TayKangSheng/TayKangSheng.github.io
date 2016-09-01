@@ -4,7 +4,7 @@ html, body {
     padding:0;
     height:100%;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 100%;
+    font-size: 17px;
     text-size-adjust: none;
 }
 
@@ -107,7 +107,19 @@ img#ProfilePicture {
 }
 
 div#container p#footnote{
+  margin-top: 1em;
   font-size: 0.5em;
+}
+
+div#container img.icons {
+  vertical-align: bottom;
+  width: 1.5em;
+}
+
+div#container div#contact a{
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none !important; 
 }
 
 
