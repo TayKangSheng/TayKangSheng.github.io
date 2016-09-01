@@ -4,7 +4,6 @@ html, body {
     padding:0;
     height:100%;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 20px;
 }
 
 /* Remove margins and padding from the list, and add a black background color */
@@ -23,9 +22,9 @@ ul.topnav {
 /* Float the list items side by side */
 ul.topnav li {float: left;}
 
-ul.topnav li:first-child {
+/*ul.topnav li:first-child {
   margin-left: 2em;
-}
+}*/
 
 /* Style the links inside the list items */
 ul.topnav li a {
@@ -35,8 +34,7 @@ ul.topnav li a {
     padding: 14px 16px;
     text-decoration: none;
     transition: 0.3s;
-    font-size: 1em; 
-    /*17px;*/
+    font-size: 30px;
 }
 
 /* Change background color of links on hover */
