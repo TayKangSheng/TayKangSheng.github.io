@@ -75,6 +75,7 @@ div#container {
   text-justify: auto;*/
   font-size: 1em;
   display: inline-block;
+  max-height: 999999px;
 }
 
 div#container h1 {
