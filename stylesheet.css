@@ -3,7 +3,7 @@ html, body {
     margin:0;
     padding:0;
     height:100%;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-family: 'Fira Sans', sans-serif;
     font-size: 17px;
     text-size-adjust: none;
 }
@@ -116,6 +116,11 @@ div#container p#footnote{
 div#container img.icons {
   vertical-align: bottom;
   width: 1.5em;
+}
+
+div#container p{
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 div#container div#contact a{
