@@ -9,23 +9,22 @@ function myFunction() {
 
 function topnav(nav){
 	// console.log("topnav: "+nav);
-	var divs = document.getElementsByTagName('div');
-	for (var i=0 ; i<divs.length; i++){
-		console.log(divs[i].id)
-		if (divs[i].id === nav){
-			divs[i].style.display = "block";
-		} else {
-			divs[i].style.display = "none";
-		}
-	}	
+	// var divs = document.getElementsByTagName('div');
+	// for (var i=0 ; i<divs.length; i++){
+	// 	if (divs[i].id === nav){
+	// 		divs[i].style.display = "inline-block";
+	// 	} else {
+	// 		divs[i].style.display = "none";
+	// 	}
+	// }	
 }
 
 function onload(){
-	var hash = window.location.hash.substring(1);
-	// console.log(hash);
-	if (!hash){
-		topnav("home");
-	} else {
-		topnav(hash);
-	}
+	// var hash = window.location.hash.substring(1);
+	// // console.log(hash);
+	// if (!hash){
+	// 	topnav("home");
+	// } else {
+	// 	topnav(hash);
+	// }
 }
