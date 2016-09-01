@@ -5,7 +5,6 @@ window.onload = function() {
 	var hash = window.location.hash.substring(1);
 	if (!hash){
 		document.getElementById("container").getElementsByTagName("div")[0].style.display = "inline-block";
-		// document.getElementsByTagName("div")
 	} else{
 		document.getElementById(hash).style.display = "inline-block";
 	}
