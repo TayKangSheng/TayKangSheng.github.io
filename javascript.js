@@ -6,6 +6,12 @@ window.onload = function() {
 	} else{
 		document.getElementById(hash).style.display = "inline-block";
 	}
+	setTimeout(showPage, 500);
+}
+
+function showPage(){
+	document.getElementById("loader").style.display = "none";
+  	document.getElementById("container").style.display = "block";
 }
 
 function myFunction() {
