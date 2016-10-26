@@ -17,7 +17,7 @@ ul.topnav {
     overflow: hidden;
     background-color: #222;
     width: 100%;
-    position: absolute;
+    position: static;
     top: 0px;
 }
 
