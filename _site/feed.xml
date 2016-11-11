@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-11-11T17:31:03+08:00</updated><id>http://localhost:4000/</id><title type="html">Kang Sheng</title><subtitle>Web Developer from where?</subtitle><entry><title type="html">The 11:11 Entry</title><link href="http://localhost:4000/blog/2016/11/11/The-11-11-Entry/" rel="alternate" type="text/html" title="The 11:11 Entry" /><published>2016-11-11T00:00:00+08:00</published><updated>2016-11-11T00:00:00+08:00</updated><id>http://localhost:4000/blog/2016/11/11/The-11-11-Entry</id><content type="html" xml:base="http://localhost:4000/blog/2016/11/11/The-11-11-Entry/">&lt;p&gt;A 11.11 Morning..
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;p&gt;Its 11th November 2016, and i am here writing the first post. :)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;table style=&quot;border-spacing: 0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot; style=&quot;text-align: right&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ISTD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;eat&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016-11-11-home.png&quot; alt=&quot;My signature image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yours truly,&lt;br /&gt;
+&lt;em&gt;Kang&lt;/em&gt;&lt;/p&gt;</content><summary type="html">A 11.11 Morning..</summary></entry><entry><title type="html">Hello World!</title><link href="http://localhost:4000/blog/2014/03/03/Hello-World/" rel="alternate" type="text/html" title="Hello World!" /><published>2014-03-03T00:00:00+08:00</published><updated>2014-03-03T00:00:00+08:00</updated><id>http://localhost:4000/blog/2014/03/03/Hello-World</id><content type="html" xml:base="http://localhost:4000/blog/2014/03/03/Hello-World/">&lt;p&gt;Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/config.png&quot; alt=&quot;_config.yml&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;Jekyll Now repository&lt;/a&gt; on GitHub.&lt;/p&gt;</content><summary type="html">Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below).</summary></entry></feed>
