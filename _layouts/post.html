@@ -3,8 +3,19 @@ layout: default
 ---
 
 <article class="post">
-  <h1>{{ page.title }}</h1>
-  
+  <h1>{{ page.title }} </h1>
+  <div style="font-size: 80%; color: grey"> Categories: 
+    <span>
+    {% for category in page.categories %}
+      {% if forloop.last == true %}
+        <a href="{{ site.baseurl }}/blog/{{ category }}">{{ category }}</a> 
+      {% else %}
+        <a href="{{ site.baseurl }}/blog/{{ category }}">{{ category }}</a>, 
+      {% endif %}
+    {% endfor %}
+    </span>
+  </div>
+
 
   <div class="entry">
     {{ content }}
@@ -14,19 +25,21 @@ layout: default
        Written on {{ page.date | date: "%B %e, %Y" }}
     </div>
 
-  <h3>Related post</h3>
   {% assign listed_posts_urls = page.url | split: ' ' %}
   {% for categories in page.categories %}
-    {% for mypost in site.categories[categories] %}
-      {% if listed_posts_urls contains mypost.url %}
-      {% else %}
-        <div>
-          <h5><a href="{{ mypost.url }}">{{ mypost.title }}</a></h5>
-        </div>
-        {% break %}
-        {% assign listed_posts_urls = listed_posts_urls | push: mypost.url %}
-      {% endif %}
-    {% endfor %}
+    {% if site.categories[categories].size > 1 %}
+      <h3>Related post</h3>
+      {% for mypost in site.categories[categories] %}
+        {% if listed_posts_urls contains mypost.url %}
+        {% else %}
+          <div>
+            <h5><a href="{{ mypost.url }}">{{ mypost.title }}</a></h5>
+          </div>
+          {% break %}
+          {% assign listed_posts_urls = listed_posts_urls | push: mypost.url %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   {% endfor %}
   
   <hr>
