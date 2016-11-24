@@ -4,22 +4,33 @@ layout: default
 
 <article class="post">
   <h1>{{ page.title }}</h1>
+  
 
   <div class="entry">
     {{ content }}
   </div>
 
-  <p>
-  Yours Truly,<br>
-  <em>Kang</em>
-  </p>
+    <div class="date">
+       Written on {{ page.date | date: "%B %e, %Y" }}
+    </div>
+
+  <h3>Related post</h3>
+  {% assign listed_posts_urls = page.url | split: ' ' %}
+  {% for categories in page.categories %}
+    {% for mypost in site.categories[categories] %}
+      {% if listed_posts_urls contains mypost.url %}
+      {% else %}
+        <div>
+          <h5><a href="{{ mypost.url }}">{{ mypost.title }}</a></h5>
+        </div>
+        {% break %}
+        {% assign listed_posts_urls = listed_posts_urls | push: mypost.url %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
   
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
-
-
-  
-
+  <hr>
   {% include disqus.html %}
+  
+
 </article>

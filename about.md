@@ -21,7 +21,7 @@ kangsheng@gmail.com
 
 ________  
 
-## EDUCATION ##
+### EDUCATION ###
 
 **Singapore University of Technology and Design**  
 *May 2013 - Sept 2016*  
@@ -30,7 +30,7 @@ ________
 * Focus Track: Computer Graphics and Interactive Technique
 * Relevant Modules: User Interface Design and Implementation, Graphics & Visualisation, Foundations of Game Design and Development.  
 
-## ACADEMIC PROJECTS ##
+### ACADEMIC PROJECTS ###
 
 **Samsung NANO, Sink-Dishwasher-PressureWasher**  
 *Feb 2016 to Aug 2016*  
@@ -76,7 +76,7 @@ ________
 * Researched on improving energy efficiency in homes using design methodologies and adapted solutions from different domains.
 * Experimented ways to improve airflow in homes and made a prototype combining bladeless fan and windows.
 
-## WORK EXPERIENCE ##
+### WORK EXPERIENCE ###
 
 **Sense Infosys Pte Ltd, Business Analyst Intern**   
 *May 2015 to Aug 2015*   
@@ -84,7 +84,7 @@ ________
 * Wrote web-scraping algorithms using Java programming language to mine for relevant online information based on customer needs and interest; and managed to scrape information from sites such as google, job portals, forums and social media.
 * Assemble interactive data visualisation dashboards to help clients make well-informed decisions. 
 
-## LEADERSHIP ##
+### LEADERSHIP ###
 
 **Livfesync (Show Choir), President, Singapore University of Technology and Design**      
 
@@ -100,7 +100,7 @@ ________
 
 * Engage youths in Nee Soon Central Community through People’s Association Youth Movement’s (PAYM) events and direction and have organised events such as annual PAYM Loves Red for youths to express their aspiration and appreciation for Singapore.
 
-## SKILLS & INTERESTS ##
+### SKILLS & INTERESTS ###
 
 **Technical Skills**      
 

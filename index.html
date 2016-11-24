@@ -18,12 +18,34 @@ layout: default
 </div> -->
 
 <div>
-	<!-- <h1>你好！</h1>
-  <p>我是郑康生。芳龄二十四岁。毕业于新加坡科技设计大学。欢迎来到我的部落格，多多了解我。:)</p>
-  <img src="/images/playground.png"/> -->
-  <h1>HOME</h1>
-  <p>Coming Soon...</p>
+  <h1>What do i do?</h1>
+  <p>
+    I am a software developer.
+  </p>
+  <p>
+    Officially, A <a href="https://en.wikipedia.org/wiki/Software_developer">software developer</a> is a person concerned with facets of the software development process, including the research, design, programming, and testing of computer software. 
+  </p>
+  <p>
+    But really? I love to help people using every bit of programming knowledge i have to make a difference. Be it just making a small microsite to bring fun and laughter, or be part of a large scale software development team to bring meaningful technology into the society. Which really means, anything works as long as i can make someone's life better.
+  </p>
 </div>
+
+<h4>Recent posts</h4>
+<table>
+  {% for i in (0..2) %}
+    <tr style="line-height: 150%;">
+      <td style="width: 100px">
+        <span style=";"> {{ site.posts[i].date | date: "%b %e, %y" }} </span>
+      </td>
+      <td style="width:100px">
+        <span style="font-size: 80%; color: grey; "> {{ site.posts[i].categories[0] }} </span>
+      </td>
+      <td>
+        <a href="{{ site.posts[i].baseurl }}{{ site.posts[i].url }}">{{ site.posts[i].title }}</a>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
 
 <style type="text/css">
 	

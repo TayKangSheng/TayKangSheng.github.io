@@ -19,7 +19,7 @@ html {
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font: 18px/1.4 $raleway;
   color: $darkGray;
 }
 
@@ -73,7 +73,7 @@ a {
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: $blue;
+    color: $black;
   }
 }
 
@@ -118,6 +118,7 @@ img {
 .date {
   font-style: italic;
   color: $gray;
+  text-align: right;
 }
 
 // Specify the color of the selection
@@ -225,7 +226,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: $blue;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
