@@ -1,4 +1,137 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-11-24T21:08:42+08:00</updated><id>http://localhost:4000/</id><title type="html">Kang Sheng</title><subtitle>Programmer ｜ Buddhist ｜ Traveller</subtitle><entry><title type="html">Reverse Polish Notation</title><link href="http://localhost:4000/blog/2016/11/24/Reverse-Polish-Notation/" rel="alternate" type="text/html" title="Reverse Polish Notation" /><published>2016-11-24T00:00:00+08:00</published><updated>2016-11-24T00:00:00+08:00</updated><id>http://localhost:4000/blog/2016/11/24/Reverse-Polish-Notation</id><content type="html" xml:base="http://localhost:4000/blog/2016/11/24/Reverse-Polish-Notation/">&lt;p&gt;Recently, i was tasked to write a program where input is RPN. Never have i heard of RPN before; naturally the only reasonable thing to do is to ask &lt;a href=&quot;https://www.google.com.sg/webhp?hl=en&amp;amp;sa=X&amp;amp;ved=0ahUKEwjWo5iphMHQAhUIPI8KHeDiABwQPAgD#hl=en&amp;amp;q=rpn+programming&quot;&gt;Google&lt;/a&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-11-25T17:58:38+08:00</updated><id>http://localhost:4000/</id><title type="html">Kang Sheng</title><subtitle>Programmer ｜ Buddhist ｜ Traveller</subtitle><entry><title type="html">Asymptotic Complexity</title><link href="http://localhost:4000/blog/2016/11/25/Asymptotic-Complexity/" rel="alternate" type="text/html" title="Asymptotic Complexity" /><published>2016-11-25T00:00:00+08:00</published><updated>2016-11-25T00:00:00+08:00</updated><id>http://localhost:4000/blog/2016/11/25/Asymptotic-Complexity</id><content type="html" xml:base="http://localhost:4000/blog/2016/11/25/Asymptotic-Complexity/">&lt;p&gt;In programmming, we often want to analyse the speed or running time of a certain algorithm that we have implemented or are studying. As the time taken to run an algorithm is heavily dependent on the environmental variables such as the hardwares the machine is equiped with and the environment the algorithm is implemented, Asymptotic Complexity provides a method to compare the running time of algorithms relative to each other by analysing the number of steps taken to complete code.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-do-we-describe-the-speed-of-algorithms&quot;&gt;How do we describe the speed of algorithms?&lt;/h2&gt;
+
+&lt;p&gt;In Asymptotic Complexity, we have 3 general approach that we use to describe an algorithm, the &lt;strong&gt;worse case&lt;/strong&gt;, &lt;strong&gt;best case&lt;/strong&gt; and &lt;strong&gt;equivilant case&lt;/strong&gt;. We want to be able to put the algorithms side by side and be able to have a method of comparing their running time without considering the limitations of environmental variables. More often than not, we compare the worse case scenario because we always want to make sure our algorithm runs in acceptable time in all scenario.&lt;/p&gt;
+
+&lt;h4 id=&quot;expressing-algorithms-in-terms-of-functions&quot;&gt;Expressing algorithms in terms of functions.&lt;/h4&gt;
+
+&lt;p&gt;To describe the complexity of an algorithm, we first have to express it in terms of a mathematical function. For example, given a list of numbers, we want to count the number of times the number ‘1’ appears. An simple implementation of such a function is using a single Forloop as shown below.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;countOnes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Breaking down the number of steps taken to execute such an algorithm; considering the worse case scenario such that the entire array is made up of ‘1’. The total number of steps taken to complete the algorithm is “&lt;strong&gt;1 + 2n + 1&lt;/strong&gt;” number of steps.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;countOnes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; 
+  &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#1 step&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#n (size of array) steps&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#for every n step, 1 step&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#for every check if true, 1 step&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#1 step to return results&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;as-the-value-of-n-tends-to-infinity&quot;&gt;As the value of n tends to infinity&lt;/h4&gt;
+
+&lt;p&gt;To fairly judge the running time across algorithms, we always consider the limit of the number of steps when the input size tends to infinity. Using the previous example, as the function n tends to inifity, “&lt;strong&gt;1 + 2n + 1&lt;/strong&gt;” tends to “&lt;strong&gt;n&lt;/strong&gt;”. Therefore we say that the algorithm runs in “&lt;strong&gt;n&lt;/strong&gt;” time. A general rule of thumb, is to always express the function in its simplest form, keeping only the dominant term.&lt;/p&gt;
+
+&lt;h4 id=&quot;types-of-functions&quot;&gt;Types of functions&lt;/h4&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;Linear Function - an + b  
+Quadratic Function - an^2 + bn + c  
+Polynomial Function - an^z + . . . + an^2 + a*n^1 + a*n^0, 
+	where z is some constant  
+Exponential Function - a^n, where a is some constant  
+Logarithmic Function - log n  
+Constant - a, where a is come constant  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To express these in their simplest form, keeping in mind the results when &lt;strong&gt;n&lt;/strong&gt; tends to infinity, we only keep the dominant term.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;Linear Function - n  
+Quadratic Function - n^2  
+Polynomial Function - n^z, where z is some constant
+Exponential Function - a^n, where a is some constant  
+Logarithmic Function - log n  
+Constant - 1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;asymptotic-notations&quot;&gt;Asymptotic Notations&lt;/h2&gt;
+
+&lt;p&gt;Asymptotic Notations are symbols used to represents the 3 cases that we want to consider, the &lt;strong&gt;worse case&lt;/strong&gt;, &lt;strong&gt;best case&lt;/strong&gt; and &lt;strong&gt;equivalent case&lt;/strong&gt; or to compare the running speed of functions.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-o-notation&quot;&gt;The O notation&lt;/h3&gt;
+
+&lt;p&gt;The &lt;strong&gt;O&lt;/strong&gt; notation is used to describe the worse case senario, which really means, the upper bound of the running time of the function.&lt;/p&gt;
+
+&lt;h4 id=&quot;big-o&quot;&gt;Big-O&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Big-O&lt;/strong&gt; is used to describe the asymptotic upper bound of the increase/growth of the function. The exact definition of Big-O is as follows:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;f(n) = O(g(n)) ⇔ ∃M&amp;gt;0, n0 
+	s.t. |f(n)|≤M|g(n)| for n≥n0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In layman terms, f(n) is equals to O(g(n)) means that there exist a value M bigger than 0 and n0 such that modulus of f(n) is bigger or equals to M multiplies by modulus of g(n) for any value of n bigger than n0.&lt;/p&gt;
+
+&lt;p&gt;Going back to the example above:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;countOnes(n) = 2n + 2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Therefore, we say the complexity of the countOnes(n) = O(n).&lt;/p&gt;
+
+&lt;p&gt;How do we use the Big-O to compare different functions? Given the following example,&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;f(n) = 3log n + 100
+g(n) = log n&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If we say that the complexity of f(n) is O(g(n)), it means that there exist a value of M such that Mod(f(n)) &amp;lt;= M Mod(g(n)) for any value of n bigger or equals to n0.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;f(n) &amp;lt;= M g(n)
+3log n + 100 &amp;lt;= M * log n&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;True enough, the above expression is true when n&amp;gt;2, because f(n) and g(n) is undefined when n=1. Therefore the definition of &lt;strong&gt;Big-O&lt;/strong&gt; is fulfilled and we can say that f(n) is O(g(n)).&lt;/p&gt;
+
+&lt;h4 id=&quot;small-o&quot;&gt;Small-o&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Small-o&lt;/strong&gt; is simply the same as &lt;strong&gt;Big-O&lt;/strong&gt; without any asymptotic upper bound. In another words, f(n) is o(g(n)) if there exist a value M such that f(n) &amp;gt;= M g(n) for all values of n.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-omega-notation&quot;&gt;The Omega notation&lt;/h3&gt;
+
+&lt;p&gt;The Omega notation is used to describe the best case senario, which really means, the lower bound of the running time of the function.&lt;/p&gt;
+
+&lt;h4 id=&quot;big-omega-&quot;&gt;Big-Omega (Ω)&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Ω&lt;/strong&gt; is used to describe the asymptotic lower bound of the increase/growth of the function. The exact definition of Ω is as follows:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;f(n) = Ω(g(n)) ⇔ ∃M &amp;gt;0, n0 
+	s.t. |f(n)|≥M|g(n)| for n≥n0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In layman terms, f(n) is equals to Ω(g(n)) means that there exist a value M bigger than 0 and n0 such that modulus of f(n) is smaller or equals to M multiplies by modulus of g(n) for any value of n bigger than n0.&lt;/p&gt;
+
+&lt;p&gt;Going back to the example above:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;countOnes(n) = 2n + 2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Therefore, we say the complexity of the countOnes(n) is also Ω(n). Because the Forloop does not contain any &lt;strong&gt;break&lt;/strong&gt; method and the Forloop has to be completed eventually.&lt;/p&gt;
+
+&lt;h4 id=&quot;small-omega-&quot;&gt;Small-Omega (ω)&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Small-Omega (ω)&lt;/strong&gt; is simply the same as &lt;strong&gt;Big-Omega (Ω)&lt;/strong&gt; without any asymptotic upper bound. In another words, f(n) is ω(g(n)) if there exist a value M such that f(n) &amp;gt;= M g(n) for all values of n.&lt;/p&gt;
+
+&lt;h3 id=&quot;theta-&quot;&gt;Theta Θ&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Theta Θ&lt;/strong&gt; is used to describe the equivalent senario. The exact definition is as follows:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-none&quot; data-lang=&quot;none&quot;&gt;f(n) = Θ(g(n)) ⇔ ∃M1,Μ2 &amp;gt; 0, n0 
+	s.t. M1g(n) ≤ f(n) ≤ M2g(n) for n≥n0&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In layman terms, f(n) is equals to Θ(g(n)) means that there exist a value M1 and M2 bigger than 0 and n0 such that M1g(n) is smaller or equals to f(n) and M2g(n) is bigger than f(n) for any value of n bigger than n0.&lt;/p&gt;
+
+&lt;p&gt;Therefore f(n) is both O(g(n)) and Ω(g(n)).&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Big-O&lt;/strong&gt; is primarily the notation used to analyse algorithm time complexity. The rest of the notations can come in helpful in different situations especially so during an Technical Interview where interviewers just want to test you on how much you know.&lt;/p&gt;
+
+&lt;p&gt;Note that this concept can be applied to different mathematical expressions not confined to the field of computer science. These symbols are used in Complexity Theory, Computer Science and Mathematics to describe asymptotic behaviour of functions. Below are some readings and reference that i have found helpful. Dive into them for more proves and examples on this topic if you are keen on learning more.&lt;/p&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;https://learnxinyminutes.com/docs/asymptotic-notation/&lt;/li&gt;
+  &lt;li&gt;Singapore University of Technology and Design, Information Systems Technology &amp;amp; Design, 50.004 Intro to Algorithms Slides&lt;/li&gt;
+  &lt;li&gt;http://web.mit.edu/16.070/www/lecture/big_o.pdf&lt;/li&gt;
+&lt;/ol&gt;</content><summary type="html">In programmming, we often want to analyse the speed or running time of a certain algorithm that we have implemented or are studying. As the time taken to run an algorithm is heavily dependent on the environmental variables such as the hardwares the machine is equiped with and the environment the algorithm is implemented, Asymptotic Complexity provides a method to compare the running time of algorithms relative to each other by analysing the number of steps taken to complete code.</summary></entry><entry><title type="html">Reverse Polish Notation</title><link href="http://localhost:4000/blog/2016/11/24/Reverse-Polish-Notation/" rel="alternate" type="text/html" title="Reverse Polish Notation" /><published>2016-11-24T00:00:00+08:00</published><updated>2016-11-24T00:00:00+08:00</updated><id>http://localhost:4000/blog/2016/11/24/Reverse-Polish-Notation</id><content type="html" xml:base="http://localhost:4000/blog/2016/11/24/Reverse-Polish-Notation/">&lt;p&gt;Recently, i was tasked to write a program where input is RPN. Never have i heard of RPN before; naturally the only reasonable thing to do is to ask &lt;a href=&quot;https://www.google.com.sg/webhp?hl=en&amp;amp;sa=X&amp;amp;ved=0ahUKEwjWo5iphMHQAhUIPI8KHeDiABwQPAgD#hl=en&amp;amp;q=rpn+programming&quot;&gt;Google&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;So according to &lt;a href=&quot;https://en.wikipedia.org/wiki/Reverse_Polish_notation&quot;&gt;Wikipedia&lt;/a&gt;,&lt;/p&gt;
 

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Asymptotic Complexity – Kang Sheng – Programmer ｜ Buddhist ｜ Traveller</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="In programmming, we often want to analyse the speed or running time of a certain algorithm that we have implemented or are studying. As the time taken to run an algorithm is heavily dependent on the environmental variables such as the hardwares the machine is equiped with and the environment the algorithm is implemented, Asymptotic Complexity provides a method to compare the running time of algorithms relative to each other by analysing the number of steps taken to complete code.
+
+" />
+    <meta property="og:description" content="In programmming, we often want to analyse the speed or running time of a certain algorithm that we have implemented or are studying. As the time taken to run an algorithm is heavily dependent on the environmental variables such as the hardwares the machine is equiped with and the environment the algorithm is implemented, Asymptotic Complexity provides a method to compare the running time of algorithms relative to each other by analysing the number of steps taken to complete code.
+
+" />
+    
+    <meta name="author" content="Kang Sheng" />
+
+    
+    <meta property="og:title" content="Asymptotic Complexity" />
+    <meta property="twitter:title" content="Asymptotic Complexity" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Kang Sheng - Programmer ｜ Buddhist ｜ Traveller" href="/feed.xml" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="/images/avatar.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Kang Sheng</a></h1>
+            <p class="site-description">Programmer ｜ Buddhist ｜ Traveller</p>
+          </div>
+
+          <nav>
+            <a href="/">Home</a>
+            <a href="/blog">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Asymptotic Complexity </h1>
+  <div style="font-size: 80%; color: grey"> Categories: 
+    <span>
+    
+      
+        <a href="/blog/Programming">Programming</a> 
+      
+    
+    </span>
+  </div>
+
+
+  <div class="entry">
+    <p>In programmming, we often want to analyse the speed or running time of a certain algorithm that we have implemented or are studying. As the time taken to run an algorithm is heavily dependent on the environmental variables such as the hardwares the machine is equiped with and the environment the algorithm is implemented, Asymptotic Complexity provides a method to compare the running time of algorithms relative to each other by analysing the number of steps taken to complete code.</p>
+
+<h2 id="how-do-we-describe-the-speed-of-algorithms">How do we describe the speed of algorithms?</h2>
+
+<p>In Asymptotic Complexity, we have 3 general approach that we use to describe an algorithm, the <strong>worse case</strong>, <strong>best case</strong> and <strong>equivilant case</strong>. We want to be able to put the algorithms side by side and be able to have a method of comparing their running time without considering the limitations of environmental variables. More often than not, we compare the worse case scenario because we always want to make sure our algorithm runs in acceptable time in all scenario.</p>
+
+<h4 id="expressing-algorithms-in-terms-of-functions">Expressing algorithms in terms of functions.</h4>
+
+<p>To describe the complexity of an algorithm, we first have to express it in terms of a mathematical function. For example, given a list of numbers, we want to count the number of times the number ‘1’ appears. An simple implementation of such a function is using a single Forloop as shown below.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">countOnes</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">):</span>
+        <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">count</span><span class="p">;</span></code></pre></figure>
+
+<p>Breaking down the number of steps taken to execute such an algorithm; considering the worse case scenario such that the entire array is made up of ‘1’. The total number of steps taken to complete the algorithm is “<strong>1 + 2n + 1</strong>” number of steps.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">countOnes</span><span class="p">(</span><span class="n">array</span><span class="p">):</span> 
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span> <span class="c">#1 step</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span> <span class="c">#n (size of array) steps</span>
+      <span class="k">if</span> <span class="p">(</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">):</span> <span class="c">#for every n step, 1 step</span>
+        <span class="n">count</span><span class="o">++</span><span class="p">;</span> <span class="c">#for every check if true, 1 step</span>
+  <span class="k">return</span> <span class="n">count</span><span class="p">;</span> <span class="c">#1 step to return results</span></code></pre></figure>
+
+<h4 id="as-the-value-of-n-tends-to-infinity">As the value of n tends to infinity</h4>
+
+<p>To fairly judge the running time across algorithms, we always consider the limit of the number of steps when the input size tends to infinity. Using the previous example, as the function n tends to inifity, “<strong>1 + 2n + 1</strong>” tends to “<strong>n</strong>”. Therefore we say that the algorithm runs in “<strong>n</strong>” time. A general rule of thumb, is to always express the function in its simplest form, keeping only the dominant term.</p>
+
+<h4 id="types-of-functions">Types of functions</h4>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">Linear Function - an + b  
+Quadratic Function - an^2 + bn + c  
+Polynomial Function - an^z + . . . + an^2 + a*n^1 + a*n^0, 
+	where z is some constant  
+Exponential Function - a^n, where a is some constant  
+Logarithmic Function - log n  
+Constant - a, where a is come constant  </code></pre></figure>
+
+<p>To express these in their simplest form, keeping in mind the results when <strong>n</strong> tends to infinity, we only keep the dominant term.</p>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">Linear Function - n  
+Quadratic Function - n^2  
+Polynomial Function - n^z, where z is some constant
+Exponential Function - a^n, where a is some constant  
+Logarithmic Function - log n  
+Constant - 1</code></pre></figure>
+
+<h2 id="asymptotic-notations">Asymptotic Notations</h2>
+
+<p>Asymptotic Notations are symbols used to represents the 3 cases that we want to consider, the <strong>worse case</strong>, <strong>best case</strong> and <strong>equivalent case</strong> or to compare the running speed of functions.</p>
+
+<h3 id="the-o-notation">The O notation</h3>
+
+<p>The <strong>O</strong> notation is used to describe the worse case senario, which really means, the upper bound of the running time of the function.</p>
+
+<h4 id="big-o">Big-O</h4>
+<p><strong>Big-O</strong> is used to describe the asymptotic upper bound of the increase/growth of the function. The exact definition of Big-O is as follows:</p>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">f(n) = O(g(n)) ⇔ ∃M&gt;0, n0 
+	s.t. |f(n)|≤M|g(n)| for n≥n0</code></pre></figure>
+
+<p>In layman terms, f(n) is equals to O(g(n)) means that there exist a value M bigger than 0 and n0 such that modulus of f(n) is bigger or equals to M multiplies by modulus of g(n) for any value of n bigger than n0.</p>
+
+<p>Going back to the example above:</p>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">countOnes(n) = 2n + 2</code></pre></figure>
+
+<p>Therefore, we say the complexity of the countOnes(n) = O(n).</p>
+
+<p>How do we use the Big-O to compare different functions? Given the following example,</p>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">f(n) = 3log n + 100
+g(n) = log n</code></pre></figure>
+
+<p>If we say that the complexity of f(n) is O(g(n)), it means that there exist a value of M such that Mod(f(n)) &lt;= M Mod(g(n)) for any value of n bigger or equals to n0.</p>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">f(n) &lt;= M g(n)
+3log n + 100 &lt;= M * log n</code></pre></figure>
+
+<p>True enough, the above expression is true when n&gt;2, because f(n) and g(n) is undefined when n=1. Therefore the definition of <strong>Big-O</strong> is fulfilled and we can say that f(n) is O(g(n)).</p>
+
+<h4 id="small-o">Small-o</h4>
+
+<p><strong>Small-o</strong> is simply the same as <strong>Big-O</strong> without any asymptotic upper bound. In another words, f(n) is o(g(n)) if there exist a value M such that f(n) &gt;= M g(n) for all values of n.</p>
+
+<h3 id="the-omega-notation">The Omega notation</h3>
+
+<p>The Omega notation is used to describe the best case senario, which really means, the lower bound of the running time of the function.</p>
+
+<h4 id="big-omega-">Big-Omega (Ω)</h4>
+
+<p><strong>Ω</strong> is used to describe the asymptotic lower bound of the increase/growth of the function. The exact definition of Ω is as follows:</p>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">f(n) = Ω(g(n)) ⇔ ∃M &gt;0, n0 
+	s.t. |f(n)|≥M|g(n)| for n≥n0</code></pre></figure>
+
+<p>In layman terms, f(n) is equals to Ω(g(n)) means that there exist a value M bigger than 0 and n0 such that modulus of f(n) is smaller or equals to M multiplies by modulus of g(n) for any value of n bigger than n0.</p>
+
+<p>Going back to the example above:</p>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">countOnes(n) = 2n + 2</code></pre></figure>
+
+<p>Therefore, we say the complexity of the countOnes(n) is also Ω(n). Because the Forloop does not contain any <strong>break</strong> method and the Forloop has to be completed eventually.</p>
+
+<h4 id="small-omega-">Small-Omega (ω)</h4>
+
+<p><strong>Small-Omega (ω)</strong> is simply the same as <strong>Big-Omega (Ω)</strong> without any asymptotic upper bound. In another words, f(n) is ω(g(n)) if there exist a value M such that f(n) &gt;= M g(n) for all values of n.</p>
+
+<h3 id="theta-">Theta Θ</h3>
+
+<p><strong>Theta Θ</strong> is used to describe the equivalent senario. The exact definition is as follows:</p>
+
+<figure class="highlight"><pre><code class="language-none" data-lang="none">f(n) = Θ(g(n)) ⇔ ∃M1,Μ2 &gt; 0, n0 
+	s.t. M1g(n) ≤ f(n) ≤ M2g(n) for n≥n0</code></pre></figure>
+
+<p>In layman terms, f(n) is equals to Θ(g(n)) means that there exist a value M1 and M2 bigger than 0 and n0 such that M1g(n) is smaller or equals to f(n) and M2g(n) is bigger than f(n) for any value of n bigger than n0.</p>
+
+<p>Therefore f(n) is both O(g(n)) and Ω(g(n)).</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><strong>Big-O</strong> is primarily the notation used to analyse algorithm time complexity. The rest of the notations can come in helpful in different situations especially so during an Technical Interview where interviewers just want to test you on how much you know.</p>
+
+<p>Note that this concept can be applied to different mathematical expressions not confined to the field of computer science. These symbols are used in Complexity Theory, Computer Science and Mathematics to describe asymptotic behaviour of functions. Below are some readings and reference that i have found helpful. Dive into them for more proves and examples on this topic if you are keen on learning more.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+  <li>https://learnxinyminutes.com/docs/asymptotic-notation/</li>
+  <li>Singapore University of Technology and Design, Information Systems Technology &amp; Design, 50.004 Intro to Algorithms Slides</li>
+  <li>http://web.mit.edu/16.070/www/lecture/big_o.pdf</li>
+</ol>
+
+
+  </div>
+
+    <div class="date">
+       Written on November 25, 2016
+    </div>
+
+  
+  
+    
+      <h3>Related post</h3>
+      
+        
+        
+      
+        
+          <div>
+            <h5><a href="/blog/2016/11/24/Reverse-Polish-Notation/">Reverse Polish Notation</a></h5>
+          </div>
+          
+    
+  
+  
+  <hr>
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = 'taykangsheng';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+  
+
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:kangsheng@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/TayKangSheng"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/TayKangSheng"><i class="svg-icon github"></i></a>
+<a href="https://instagram.com/kangsterchikenzster"><i class="svg-icon instagram"></i></a>
+
+
+
+<a href="https://www.twitter.com/TayKangSheng"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
