@@ -61,10 +61,7 @@ ArrayList<Integer> arrayList = new ArrayList<Integer>();
 
 ## Conclusion
 
-Last but not least, i would like to say, knowing the definitions of the terms is important for you to keep yourself clear of what you would like to express. However, different programming languages might refer to different things differently and it is of some good to express some flexibility when using the terms. For example if you open the link on Python about List above, it says that a List is a Data Type. Why so? Because different programming languages have a different set of what they refer to as **Data Type**. So when communicating in these programming languages, know the jargons and try not to get yourself mixed up. All in all, understanding is key! Why is there a need to split the seemingly similar **Array** and **List**.
-
-
-
+Last but not least, i would like to say, knowing the definitions of the terms is important for you to keep yourself clear of what you would like to express. However, different programming languages might refer to them differently and it is of some good to express some flexibility when using the terms. For example if you open the link on Python about List above, it says that a List is a Data Type. Why so? Because different programming languages have a different set of what they refer to as **Data Type**. So when communicating in these programming languages, know the jargons and try not to get yourself mixed up. All in all, understanding is key! Why is there a need to split the seemingly similar **Array** and **List**.
 
 ## Reference
 1. <http://www.cs.cmu.edu/~mrmiller/15-110/Handouts/primitiveData.pdf>
