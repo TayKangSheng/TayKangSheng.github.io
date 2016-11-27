@@ -7,7 +7,7 @@ categories: Programming
 
 Recently I was asked a supposedly basic question that really is at the core of programming, and that is "What is the difference between an Array and a List?". The idea of Array and List is so basic that i have never actually gone deep into the difference between the 2; but instead use them loosely treating them as the same. Therefore i was dumbfounded when i was posted this question, especially during an important technical interview and i was pretty disappointed with myself for not being keen enough to pick on the basic definitions while dreaming of building large applications. So i hope this post serves as a reminder of our basic knowledge, and that it helps you as much as it is going to help me grow as a computer programmer.
 
-Before jumping into the difference between the Array and List, we first have to understand what is the difference between **data types**, **abstract data type (ADT)** and **data structure**. I will tell you the answer first, so that you can keep them in context while trying to understand the differences between data types, ADT and data structure. An Array is a **Data Type** and a **List** is an ADT and Data Structure.
+Before jumping into the difference between the Array and List, we first have to understand what is the difference between **data types**, **abstract data type (ADT)** and **data structure**. I will tell you the answer first, so that you can keep them in context while trying to understand the differences between data types, ADT and data structure. An Array is a **Data Type** and a **List** is both an ADT and Data Structure.
 
 ### Data Type and Why is Array a Data Type?
 
