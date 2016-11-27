@@ -72,11 +72,11 @@
   <div class="entry">
     <p>Recently I was asked a supposedly basic question that really is at the core of programming, and that is “What is the difference between an Array and a List?”. The idea of Array and List is so basic that i have never actually gone deep into the difference between the 2; but instead use them loosely treating them as the same. Therefore i was dumbfounded when i was posted this question, especially during an important technical interview and i was pretty disappointed with myself for not being keen enough to pick on the basic definitions while dreaming of building large applications. So i hope this post serves as a reminder of our basic knowledge, and that it helps you as much as it is going to help me grow as a computer programmer.</p>
 
-<p>Before jumping into the difference between the Array and List, we first have to understand what is the difference between <strong>data types</strong>, <strong>abstract data type (ADT)</strong> and <strong>data structure</strong>. I will tell you the answer first, so that you can keep them in context while trying to understand the differences between data types, ADT and data structure. An Array is a <strong>Data Type</strong> and a <strong>List</strong> is an ADT and Data Structure.</p>
+<p>Before jumping into the difference between the Array and List, we first have to understand what is the difference between <strong>data types</strong>, <strong>abstract data type (ADT)</strong> and <strong>data structure</strong>. I will tell you the answer first, so that you can keep them in context while trying to understand the differences between data types, ADT and data structure. An Array is a <strong>Data Type</strong> and a <strong>List</strong> is both an ADT and Data Structure.</p>
 
-<h3 id="data-type-and-why-is-array-a-data-type">Data Type and Why is Array a Data Type?</h3>
+<h2 id="data-type-and-why-is-array-a-data-type">Data Type and Why is Array a Data Type?</h2>
 
-<p>A Data Type, or sometimes refered to as Primitive Data Type are only single values without any special capabilities. Examples of Data Types are “int”, “double”, “char”, “boolean”, “String” etc. These Data Types usually have a particular declared size in number of bits at the logic level. For example a integer is 32bits long and a double is 64bits long. Declaring a data type when intialising a variable instructs the compiler to set aside a portion of memory large enough to hold the data of that type.</p>
+<p>A Data Type, or sometimes refered to as Primitive Data Type are only single values without any special capabilities. Examples of Data Types are “int”, “double”, “float”,”char”, “boolean” etc. These Data Types usually have a particular declared size in number of bits at the logic level. For example a integer is 32bits long and a double is 64bits long. Declaring a data type when intialising a variable instructs the compiler to set aside a portion of memory large enough to hold the data of that type.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">int</span> <span class="n">i</span><span class="o">;</span> 
 <span class="c1">// compiler sets aside 32bits of memory for variable i</span>
@@ -90,9 +90,9 @@
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
 <span class="c1">// compiler sets aside (32*10)bits of memory for variable array</span></code></pre></figure>
 
-<p>So if you have tried it for yourself, if you declare the array without stating the size of the array, your code will not be allowed to be compiled. So if you compare the array data type to the primitive data types mentioned above, the only difference between them is that an array is a collection of the data types ordered squentially in memory.</p>
+<p>If you have tried it for yourself, if you declare the array without stating the size of the array, your code will not be allowed to be compiled. Then compare the array data type to the primitive data types mentioned above, the only difference between them is that an array is a collection of the data types ordered squentially in memory.</p>
 
-<h3 id="list-as-a-abstract-data-type-adt-and-data-structure">List as a Abstract Data Type (ADT) and Data Structure.</h3>
+<h2 id="list-as-a-abstract-data-type-adt-and-data-structure">List as a Abstract Data Type (ADT) and Data Structure.</h2>
 
 <p>To understand the difference between ADT and Data Structure, i found a link online where the author aptly divides the 2 terms. I have put the link under <strong>References</strong> below if you want to read up more about the difference between the 2.</p>
 
@@ -102,9 +102,21 @@
 
 <p>A <strong>Abstract Data Type</strong> (ADT) is simple a logical description of what is this data type supposed to do and what are the operations that can be done with it. An example of a ADT, is a <strong><a href="https://en.wikipedia.org/wiki/Priority_queue">Priority Queue</a></strong>. The logical description of a <strong>Priority Queue</strong> is that it is a queue where each element has a “priority” associated with it. In this queue, an element with higher priority is served first before elements with lower priority is served and that if 2 elements have the same priority, they are served according to their order in the queue. The 2 operations that this ADT must support are <strong>insert_with_priority</strong> and <strong>pull_highest_priority</strong>. However, this is only a logical description without specifying how exactly it should be implemented and only provides an overview of what it should be and what it should do.</p>
 
-<p>On the other hand, a <strong>Data Structure</strong> is an implementation of a way data is organised. By data, it can be of the same or different <strong>Data Type</strong> purely decided by how the Data Structure is implemented. In many cases such as in OOP, the details of how the <strong>Data Structure</strong> is implemented is unimportant unless when efficiency is an issue. In this case, a <strong>List</strong>, although logically similar to an <strong>Array</strong> to provide a sequential method for users to acess and manipulate elements might not be as straight forward as setting aside memory space contiguously. In fact, most often than not, a List data structure provides more functions and sometimes a more ingenious way to arrange data to improve access time.</p>
+<p>On the other hand, a <strong>Data Structure</strong> is an implementation of a way data is organised. By data, it can be of the same or different <strong>Data Type</strong> purely decided by how the Data Structure is implemented. In many cases such as in OOP, the details of how the <strong>Data Structure</strong> is implemented is unimportant unless when efficiency is an issue. In this case, a <strong>List</strong>, although logically similar to an <strong>Array</strong> to provide a sequential method for users to acess and manipulate elements might not be as straight forward as setting aside memory space contiguously. In fact, most often than not, a List data structure provides more functions and sometimes a more ingenious way to arrange data to improve access time. An example of a List Data Structure is as below:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span></code></pre></figure>
 
 <p>So when is a List a ADT and when is it a Data Structure? Simply put, a <strong>List</strong> is a ADT when discussed using words and a <strong>List</strong> is a data structure when it is implemented in code for you to use. Each programming language usually have their own implementation of List such as <a href="https://www.tutorialspoint.com/python/python_lists.htm">Python</a> and <a href="http://docs.oracle.com/javase/8/docs/api/java/util/List.html">Java</a>.</p>
+
+<h2 id="differences-between-an-array-list">Differences between an Array List?</h2>
+
+<p>Now the question that i was dumbfounded by. The key difference between an Array and List is that an Array is a Data Type and a List is a Data Structure. That being said, an Array must declare its size at right at the start so that the correct amount of memory space can be allocated. But instead the List, more often than not, does not require the user to declare the size at the start. This is why most of the time List is more versatile to deal with than an array. Understand that a List is a data structure and an Array is a Data Type; then you will be able to understand all the differences between List and Array.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// This is an array</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">20</span><span class="o">];</span>
+<span class="c1">// These are Lists</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
+<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">arrayList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span></code></pre></figure>
 
 <h2 id="conclusion">Conclusion</h2>
 
@@ -112,11 +124,11 @@
 
 <h2 id="reference">Reference</h2>
 <ol>
-  <li>http://www.cs.cmu.edu/~mrmiller/15-110/Handouts/primitiveData.pdf</li>
-  <li>https://en.wikipedia.org/wiki/Array_data_type</li>
-  <li>https://www.quora.com/What-is-the-difference-between-an-array-a-list-and-a-linked-list</li>
-  <li>https://abrickshort.wordpress.com/2005/03/06/abstract-data-types-vs-data-structures/</li>
-  <li>https://en.wikipedia.org/wiki/Priority_queue</li>
+  <li><a href="http://www.cs.cmu.edu/~mrmiller/15-110/Handouts/primitiveData.pdf">http://www.cs.cmu.edu/~mrmiller/15-110/Handouts/primitiveData.pdf</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Array_data_type">https://en.wikipedia.org/wiki/Array_data_type</a></li>
+  <li><a href="https://www.quora.com/What-is-the-difference-between-an-array-a-list-and-a-linked-list">https://www.quora.com/What-is-the-difference-between-an-array-a-list-and-a-linked-list</a></li>
+  <li><a href="https://abrickshort.wordpress.com/2005/03/06/abstract-data-types-vs-data-structures/">https://abrickshort.wordpress.com/2005/03/06/abstract-data-types-vs-data-structures/</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Priority_queue">https://en.wikipedia.org/wiki/Priority_queue</a></li>
 </ol>
 
   </div>
