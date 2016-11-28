@@ -234,7 +234,7 @@ Keep in mind that the height of the **Heap** is at most log n, therefore searchi
 
 # References
 1. https://en.wikipedia.org/wiki/Heap_(data_structure)
-3. Singapore University of Technology and Design, Information Systems Technology & Design, 50.004 Intro to Algorithms Slides
+2. Singapore University of Technology and Design, Information Systems Technology & Design, 50.004 Intro to Algorithms Slides
 
 [1]:{{ site.baseurl }}/downloads/2016-11-26-MaxHeap.java
 

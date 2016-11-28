@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Binary Search Trees – Kang Sheng – Programmer ｜ Buddhist ｜ Traveller</title>
+
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="In this article we are going to examine what are Binary Search Trees (BST), how to implement it and  the performance of BST as a Data Structure.
+
+" />
+    <meta property="og:description" content="In this article we are going to examine what are Binary Search Trees (BST), how to implement it and  the performance of BST as a Data Structure.
+
+" />
+    
+    <meta name="author" content="Kang Sheng" />
+
+    
+    <meta property="og:title" content="Binary Search Trees" />
+    <meta property="twitter:title" content="Binary Search Trees" />
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Kang Sheng - Programmer ｜ Buddhist ｜ Traveller" href="/feed.xml" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300" rel="stylesheet">
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="/images/avatar.png" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Kang Sheng</a></h1>
+            <p class="site-description">Programmer ｜ Buddhist ｜ Traveller</p>
+          </div>
+
+          <nav>
+            <a href="/">Home</a>
+            <a href="/blog">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Binary Search Trees </h1>
+  <div style="font-size: 80%; color: grey"> Categories: 
+    <span>
+    
+      
+        <a href="/blog/Programming">Programming</a> 
+      
+    
+    </span>
+  </div>
+
+
+  <div class="entry">
+    <p>In this article we are going to examine what are Binary Search Trees (BST), how to implement it and  the performance of BST as a Data Structure.</p>
+
+<h2 id="binary-tree">Binary Tree</h2>
+
+<p>So before we start on BST, what is a Binary Tree? Binary Binary trees are simply a data structure made of nodes where each node have a Left child node, a Right child node and a Data element. The topmost node is called the root node.</p>
+
+<p>Each node (excluding the parent node) is connected by a direct edge from another node called its Parent node; and each node can be connected by a direct edge to either 0, 1 or 2 nodes called Children nodes. If a node does not have any children nodes, it is called a leaf node or external node. Else, it is called an Internal node. Nodes with the same parents are called siblings.</p>
+
+<h2 id="binary-search-tree">Binary Search Tree</h2>
+
+<p>Binary Search Trees (BST) are actually a particular kind of Binary Trees. The main motivation of BST is to provide a way to efficiently sort, search and retrieve data from a set of data.</p>
+
+<p>The charateristics of a BST is as follows:</p>
+
+<ol>
+  <li>Each node contains one key (data element)</li>
+  <li>The keys on the left subtree are less than the key in its parent node.</li>
+  <li>The keys on the right subtree are more than the key in its parent node.</li>
+  <li>Duplicate keys are not allowed.</li>
+</ol>
+
+<p>As the Left child node and right child node of a parent node are also subtrees by themselves, the above characteristic is recursively appiled to all nodes in the BST tree. An example of a BST is as below:</p>
+
+<p><img src="/images/2016-11-28-BST.bmp" alt="BST" class="center-image" /></p>
+
+<p>Some of the common operations a BST should be able to support are: <strong>Insert</strong>, <strong>Search</strong>, <strong>FindMax</strong>, <strong>FindMin</strong>, <strong>Delete</strong>.</p>
+
+<h3 id="implementation">Implementation</h3>
+
+<p><em>Disclaimer: This implementation is heavily based on this <a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html">article</a> and you can find the full implementation in the article too. What i have in this article instead, is a built on and my learnings from understanding the explanations and the code in that article.</em></p>
+
+<p>This implementation that we are going to go through in this article is a BST with a Generic Data Type. This is so to have a BST that is capable of handling object of any type. A BST class can be implemented with a structure such as below, with a private inner class Node. Note that because of the nature of BST, there is a need to be able to compare the Data Type and therefore in this implementation, the Generic Data Type extends the Java class Comparable.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BST</span><span class="o">&lt;</span><span class="n">T</span> <span class="kd">extends</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;{</span>
+  <span class="c1">// Variables</span>
+  <span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">root</span><span class="o">;</span>
+  <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="o">;</span>
+  <span class="c1">// Constructors</span>
+  <span class="o">...</span>
+  <span class="c1">// Helper Methods</span>
+  <span class="o">...</span>
+  <span class="c1">// Methods</span>
+  <span class="o">...</span>
+  <span class="kd">private</span> <span class="kd">class</span> <span class="nc">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;{</span>
+    <span class="kd">private</span> <span class="n">T</span> <span class="n">data</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="n">T</span> <span class="n">value</span><span class="o">){</span>
+      <span class="n">data</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+      <span class="n">left</span> <span class="o">=</span> <span class="n">right</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="o">(){</span>
+      <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Due to the recursive nature of the data structure, all operations always have to start from the root node. Therefore we only need to save one node and that is the root node. Operations such as Insert, Search and etc all have to start from the root node in order to get to the correct position on the tree. Hence, the inner class Node does not need to save a reference link to its Parent node either. Another variable we have saved is the Comparator, because we want users to use this BST for any DataType and therefore this Comparator objects provides a way for users to be able to compare the DataType properly.</p>
+
+<h4 id="constructors">Constructors</h4>
+
+<p>Constructors are the key method to initalise a class. As we have provided a Generic DataType for the BST class, we want to be able to make proper comparison for any DataType provided when using this BST class. Therefore we provide 2 ways of initialising this BST tree, one is without custom Comparator and the other with a customr Comparator.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Constructors</span>
+<span class="kd">public</span> <span class="nf">BST</span><span class="o">(){</span>
+  <span class="n">root</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="n">comparator</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="kd">public</span> <span class="nf">BST</span><span class="o">(</span><span class="n">Comparator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">comp1</span><span class="o">){</span>
+  <span class="n">root</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="n">comparator</span> <span class="o">=</span> <span class="n">comp1</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="helper-methods">Helper Methods</h4>
+
+<p>As mentioned above, we need a way to compare the DataType. If the DataType is a primitive numerical DataType such as int and float, there is no need to implement another comparator. However if the DataType is otherwise, then we have to properly implement a helper method to allow us to compare the value of the DataType.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"> 
+<span class="kd">private</span> <span class="kt">int</span> <span class="nf">compare</span><span class="o">(</span><span class="n">T</span> <span class="n">x</span><span class="o">,</span> <span class="n">T</span> <span class="n">y</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">comparator</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">y</span><span class="o">);</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">comparator</span><span class="o">.</span><span class="na">compare</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="insert">Insert</h4>
+
+<p>The Insert method employs a recursive search down the tree from the root node. Knowing the rules governing the data structure, we can simply traverse down the tree, going left if the key to be inserted is smaller than the current node, and going right if otherwise. If at any point in time, the key is found to already exist in the node, we simply stop the Insert; because duplicate keys are not allowed in a BST. Therefore a new Insert always replaces a null reference.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// A public and a private method is to provide</span>
+<span class="c1">// encapsulation of the recursive insert method.</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="n">T</span> <span class="n">toInsert</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">root</span> <span class="o">=</span> <span class="n">insert</span><span class="o">(</span><span class="n">root</span><span class="o">,</span> <span class="n">toInsert</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">insert</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">,</span> <span class="n">T</span> <span class="n">toInsert</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">parent</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// We have reached the end of the tree and found</span>
+    <span class="c1">// the correct position to insert the new key.</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;(</span><span class="n">toInsert</span><span class="o">);</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="c1">// First check whether the toInsert key is the</span>
+    <span class="c1">// same as the key of the current Node.</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">compare</span><span class="o">(</span><span class="n">toInsert</span><span class="o">,</span> <span class="n">parent</span><span class="o">.</span><span class="na">data</span><span class="o">)</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">return</span> <span class="n">parent</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="c1">// Check whether the toInsert key is bigger or equal</span>
+    <span class="c1">// to the current key. If smaller, insert in the left</span>
+    <span class="c1">// subtree. Else, insert in the right subtree.</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">compare</span><span class="o">(</span><span class="n">toInsert</span><span class="o">,</span> <span class="n">parent</span><span class="o">.</span><span class="na">data</span><span class="o">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">parent</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">insert</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">toInsert</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+      <span class="n">parent</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">insert</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">toInsert</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="k">return</span> <span class="n">parent</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="search">Search</h4>
+
+<p>Searching through a BST always start from the root node. From the root node, if the key we are searching for does not match the key of the root node, we compare the value of the key with the key of the root node. If the value of the key is smaller, we search for the key in the left subtree, otherwise we search for the key in the right subtree. From here, we recursively search down the tree until we reach the end of the tree which means the key does not exist, or we find an match somewhere along the path.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Again we first start with Encapsulation</span>
+<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">search</span><span class="o">(</span><span class="n">T</span> <span class="n">toSearch</span><span class="o">){</span>
+  <span class="k">return</span> <span class="nf">search</span><span class="o">(</span><span class="n">root</span><span class="o">,</span> <span class="n">toSearch</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">search</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">,</span> <span class="n">T</span> <span class="n">toSearch</span><span class="o">){</span>
+  <span class="k">if</span> <span class="o">(</span> <span class="n">parent</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">){</span>
+    <span class="c1">// We have come to the end of the tree. </span>
+    <span class="c1">// Key has not been found.</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="k">if</span> <span class="o">(</span> <span class="n">compare</span><span class="o">(</span> <span class="n">toSearch</span><span class="o">,</span> <span class="n">parent</span><span class="o">.</span><span class="na">data</span> <span class="o">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">){</span>
+    <span class="c1">// We have found a match with the</span>
+    <span class="c1">// key we are looking for!</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="c1">// If key is smaller than parent.data, </span>
+  <span class="c1">// search in left subtree. Else search in</span>
+  <span class="c1">// right subtree.</span>
+  <span class="k">if</span> <span class="o">(</span> <span class="n">compare</span><span class="o">(</span> <span class="n">toSearch</span><span class="o">,</span> <span class="n">parent</span><span class="o">.</span><span class="na">data</span> <span class="o">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">){</span>
+    <span class="k">return</span> <span class="nf">search</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">toSearch</span><span class="o">);</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="nf">search</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">toSearch</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="findmax--findmin">FindMax &amp; FindMin</h4>
+
+<p>Keeping the simple rule of BST in mind that smaller keys always go to the left of the tree and larger keys always go to the right of the tree. The find max and min methods can be implemented in just a few lines of code.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Again, encapsulation first.</span>
+<span class="kd">public</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">findMax</span><span class="o">(){</span>
+  <span class="k">return</span> <span class="nf">findMax</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">findMax</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">){</span>
+  <span class="k">while</span> <span class="o">(</span><span class="n">parent</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+    <span class="c1">// Keep going until the furthest right of the tree</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="k">return</span> <span class="n">parent</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Again, encapsulation first</span>
+<span class="kd">public</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">findMin</span><span class="o">(){</span>
+  <span class="k">return</span> <span class="nf">findMin</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">findMin</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">){</span>
+  <span class="k">while</span> <span class="o">(</span><span class="n">parent</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+    <span class="c1">// Keep going until the furthest left of the tree</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
+  <span class="o">}</span>
+  <span class="k">return</span> <span class="n">parent</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<h4 id="delete">Delete</h4>
+
+<p>Deleting is a bit more tricky than the previous 2 methods. Removing a node means that in some cases, we have to edit the links between nodes such that subtrees will not be un-reachable after deleting a certain node. There are a total of 4 cases when we want to delete a single node:</p>
+
+<ol>
+  <li>Key is not in the tree</li>
+  <li>Node is a leaf node</li>
+  <li>Node has only 1 child</li>
+  <li>Node has 2 children.</li>
+</ol>
+
+<p>If the key is not in the tree, there is nothing to delete. If the key is in a leaf node, we can simply make this node become a null reference. If this node has only 1 child, then like a link list, we can update this node to become the child node thus bypassing the node that is to be deleted.</p>
+
+<p><img src="/images/2016-11-28-Delete1.bmp" alt="Delete1" class="center-image" /></p>
+
+<p>The trickiest is when you want to delete a node that has 2 child nodes. If we delete such a node, we have 2 separate subtrees below it and we have to find a way to make this 2 subtrees into a single tree to replace the deleted node. Therefore the strategy is the following: <em>replace the node being deleted with the largest node in the left subtree and then delete that largest node. By symmetry, the node being deleted can also be swapped with the smallest node is the right subtree, and then delete that smallest node.</em></p>
+
+<p><img src="/images/2016-11-28-Delete2.bmp" alt="Delete2" class="center-image" /></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Again always remember to encapsulate functions.</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="n">T</span> <span class="n">toDelete</span><span class="o">){</span>
+  <span class="n">root</span> <span class="o">=</span> <span class="n">delete</span><span class="o">(</span><span class="n">root</span><span class="o">,</span> <span class="n">toDelete</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">delete</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">,</span> <span class="n">T</span> <span class="n">toDelete</span><span class="o">){</span>
+  <span class="k">if</span> <span class="o">(</span> <span class="n">parent</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">)</span> <span class="o">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"Cannot Delete."</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="k">if</span> <span class="o">(</span> <span class="n">compare</span><span class="o">(</span> <span class="n">toDelete</span><span class="o">,</span> <span class="n">parent</span><span class="o">.</span><span class="na">data</span> <span class="o">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">){</span>
+    <span class="n">parent</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">delete</span><span class="o">(</span> <span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">toDelete</span> <span class="o">);</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span> <span class="n">compare</span><span class="o">(</span> <span class="n">toDelete</span><span class="o">,</span> <span class="n">parent</span><span class="o">.</span><span class="na">data</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">){</span>
+    <span class="n">parent</span><span class="o">.</span><span class="na">right</span> <span class="o">=</span> <span class="n">delete</span><span class="o">(</span> <span class="n">parent</span><span class="o">.</span><span class="na">right</span><span class="o">,</span> <span class="n">toDelete</span> <span class="o">);</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span> <span class="n">parent</span><span class="o">.</span><span class="na">left</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">){</span>
+      <span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="na">right</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span> <span class="n">parent</span><span class="o">.</span><span class="na">right</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">){</span>
+      <span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+      <span class="n">parent</span> <span class="o">=</span> <span class="n">findMax</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+      <span class="n">parent</span><span class="o">.</span><span class="na">left</span> <span class="o">=</span> <span class="n">delete</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">,</span> <span class="n">parent</span><span class="o">.</span><span class="na">data</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="k">return</span> <span class="n">parent</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="tree-traversal">Tree Traversal</h3>
+
+<p>One key characteristic of a BST is that you can output the nodes with keys in a ascending order using pre-order traversal. Traversal is a process that visits all the nodes in the tree. Since a tree is not a linear data structure, we can visit all the nodes in the tree in 2 approaches. The first is depth first traversal and the second is breath first traversal.</p>
+
+<p>There are 3 different kinds of depth first traversal:</p>
+
+<ol>
+  <li>Pre-Order Traversal - visit the parent first and then left and right children.</li>
+  <li>In-Order Traversal - visit the left child first, then the parent and right child.</li>
+  <li>Post-Order Traversal - visit the left child, then the right child and then the parent.</li>
+</ol>
+
+<p><img src="/images/2016-11-28-TreeTraversal.png" alt="TreeTraversal" class="center-image" /></p>
+
+<p>The black dots on the nodes are the order where the nodes are visited. These traversal can be represented in a single algorithm by assuming that we visit each node 3 times. An <strong>Euler tour</strong> is a walk around the binary tree where edges are treated as walls, which you cannot cross. During the walk around the tree, you will visit the nodes 3 times each. Following the left wall of each node, you will be visiting the nodes in the Pre-Order Traversal. Following the bottom wall of each node, you will be visiting the nodes in the In-Order Traversal. Following the right wall of each node, you will be visiting the nodes in the Post-Order Traversal.</p>
+
+<p><img src="/images/2016-11-29-TraversalEuler.bmp" alt="TreeTraversal" class="center-image" /></p>
+
+<p>As for breath first traversal, there is only one kind which is the level order traversal. Which means that you visit the nodes level by level from the root node.</p>
+
+<h4 id="implementation-1">Implementation</h4>
+
+<p>Implementation of the 3 depth first traversal can be done recursively and is very similar. For Pre-Order traversal, we will print the key of the node the moment the node is visited for the first time.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//Again, Encapsulation First!!</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">preOrderTraversal</span><span class="o">(){</span>
+  <span class="n">preOrderTraversal</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">preOrderTraversal</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">){</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">parent</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">parent</span><span class="o">);</span>
+    <span class="n">preOrderTraversal</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+    <span class="n">preOrderTraversal</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>For In-Order traversal, we will print the key of the node the second time the node is visited.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//Again, Encapsulation First!!</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">InOrderTraversal</span><span class="o">(){</span>
+  <span class="n">InOrderTraversal</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">InOrderTraversal</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">){</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">parent</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+    <span class="n">InOrderTraversal</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">parent</span><span class="o">);</span>
+    <span class="n">InOrderTraversal</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>Last but not least, for Post-Order traversal, we will print the key of the node the last time the node is visited.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//Again, Encapsulation First!!</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">PostOrderTraversal</span><span class="o">(){</span>
+  <span class="n">PostOrderTraversal</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
+  <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">PostOrderTraversal</span><span class="o">(</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">parent</span><span class="o">){</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">parent</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span>
+    <span class="n">PostOrderTraversal</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+    <span class="n">PostOrderTraversal</span><span class="o">(</span><span class="n">parent</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">parent</span><span class="o">);</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="iterator">Iterator</h3>
+
+<p>After implementing a BST object. What if we want to iterator through the nodes of the BST sequentially? An example below is something that we as programmers always use to quickly iterate through the values of a dataset:</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">BST</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">bst</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BST</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;();</span>
+<span class="o">...</span>
+<span class="k">for</span> <span class="o">(</span><span class="n">T</span> <span class="n">i</span> <span class="o">:</span> <span class="n">bst</span><span class="o">){</span>
+	<span class="o">...</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>In this case, we are going to implement the iterator to iterate through the BST in Pre-Order. Therefore the first thing to do is how do we implement an iterator? We start by making BST implement the Iterable interface.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BST</span><span class="o">&lt;</span><span class="n">T</span> <span class="kd">extends</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="kd">implements</span> <span class="n">Iterable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+<span class="o">...</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>After implementing the Iterable interface, if you are using any decent IDE (Integrated Development Environment), it should prompt you to add the unimplemented methods of the Iterable interface; which is the iterator() function. We are going to implement the iterator as a private inner class of the BST class. Follow the “implementing iterable” article in the reference if you want to read up more.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// This is the method from Iterable interface</span>
+<span class="c1">// that you will be prompted to implement</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">iterator</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="k">new</span> <span class="nf">BSTiterator</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="c1">// We are going to implement our own Iterator as a </span>
+<span class="c1">// private inner class inside the BST class.</span>
+<span class="kd">private</span> <span class="kd">class</span> <span class="nc">BSTiterator</span> <span class="kd">implements</span> <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;{</span>
+  <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;</span> <span class="n">stk</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;();</span>
+  <span class="kd">public</span> <span class="nf">BSTiterator</span><span class="o">(){</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">){</span> <span class="n">stk</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">root</span><span class="o">);</span> <span class="o">}</span>
+  <span class="o">}</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">hasNext</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="o">!</span><span class="n">stk</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">();</span>
+  <span class="o">}</span>
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="n">T</span> <span class="nf">next</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">stk</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">throw</span> <span class="k">new</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">NoSuchElementException</span><span class="o">();</span>
+    <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">stk</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">right</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">stk</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="n">stk</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">cur</span><span class="o">.</span><span class="na">data</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>The main problem with implementing this iterator interface is that it is easy to generate a whole list of keys by Pre-Order traversal in one shot using recursion, however in this interator class, we have to implement the Pre-Order traversal such that calling the next() method steps through the recursion. In another words, it “requires the implicit recursive stack implemented explicitly”. The implementation above seems to work like magic, however there is a need to understand the rational behind it in order to produce it again and again.</p>
+
+<p>So here is how to step through the Pre-Order Traversal of BST. The algorithm starts with the root and push it on a stack. When a user calls for the next() method, we check if the top element has a left child. If it has a left child, we push that child on a stack and return a parent node. If there is no a left child, we check for a right child. If it has a right child, we push that child on a stack and return a parent node. If there is no right child, we move back up the tree (by popping up elements from a stack) until we find a node with a right child.</p>
+
+<p>The implementation of the algorithm below looks like magic to me too, but i still manage to step through it using pen and paper. So try it for yourself and understand the magic that goes on inside the brain of Computer Scientist.</p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="n">T</span> <span class="nf">next</span><span class="o">()</span>
+<span class="o">{</span>
+  <span class="n">Node</span> <span class="n">cur</span> <span class="o">=</span> <span class="n">stk</span><span class="o">.</span><span class="na">peek</span><span class="o">();</span>
+  <span class="k">if</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">stk</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">cur</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
+  <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">Node</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">stk</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+    <span class="k">while</span><span class="o">(</span><span class="n">tmp</span><span class="o">.</span><span class="na">right</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">stk</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="k">return</span> <span class="n">cur</span><span class="o">.</span><span class="na">data</span><span class="o">;</span>
+      <span class="n">tmp</span> <span class="o">=</span> <span class="n">stk</span><span class="o">.</span><span class="na">pop</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="n">stk</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">tmp</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
+  <span class="o">}</span>
+  <span class="k">return</span> <span class="n">cur</span><span class="o">.</span><span class="na">data</span><span class="o">;</span>
+<span class="o">}</span></code></pre></figure>
+
+<h3 id="time-complexity">Time Complexity</h3>
+
+<p>So how does a BST as a data structure fare?</p>
+
+<p>Assuming we have a complete binary tree, which means that the tree has the best possible ratio between the number of nodes and the height. Which really means that the nodes is equally distributed at both sides. Then the height of the BST is at most O(log n). Therefore <strong>Insert</strong>, <strong>Search</strong>, <strong>FindMax</strong>, <strong>FindMin</strong>, <strong>Delete</strong> functions are O(log n).</p>
+
+<p>Constructing the BST will take O(n log n). To sort a data set using a complete binary tree means that you have to firstly construct the tree, and use Pre-Order Traversal. Hence is n + n log n = O(n log n).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th> </th>
+      <th style="text-align: left"><strong>Time Complexity</strong></th>
+      <th> </th>
+      <th style="text-align: left"><strong>Operation</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">a)</td>
+      <td> </td>
+      <td style="text-align: left">O(log n)</td>
+      <td> </td>
+      <td style="text-align: left">Insert</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">b)</td>
+      <td> </td>
+      <td style="text-align: left">O(log n)</td>
+      <td> </td>
+      <td style="text-align: left">Search</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">c)</td>
+      <td> </td>
+      <td style="text-align: left">O(log n)</td>
+      <td> </td>
+      <td style="text-align: left">FindMax, FindMin</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">d)</td>
+      <td> </td>
+      <td style="text-align: left">O(log n)</td>
+      <td> </td>
+      <td style="text-align: left">Delete</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">e)</td>
+      <td> </td>
+      <td style="text-align: left">O(n log n)</td>
+      <td> </td>
+      <td style="text-align: left">sort</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Trees are an extended concept of linked data structures. Trees exhibits many advantages as Data Structures and therefore they are frequently used. BST is one such simple example of a tree with a small additional rule. Keeping in mind the idea of trees as data structures, rules can be added and remove with flexibility to suit the context of the problem.</p>
+
+<p>I have learnt alot writing this article and implementing the BST class. My code can be downloaded <a href="/downloads/2016-11-28-BST.java">HERE</a>. I have heavily referenced the first article in the Reference section below and has treated it as my main learning material for this Article. There is a source code provided in there too, and it is definitely worth a read. Some of the implementations are pretty deep and ingenious so please go and have a look. It is definitely worth learning how to write such awesome code.</p>
+
+<h2 id="references">References</h2>
+
+<ol>
+  <li><a href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html">https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html</a></li>
+  <li>Singapore University of Technology and Design, Information Systems Technology &amp; Design, 50.004 Intro to Algorithms Slides</li>
+  <li><a href="http://tutorials.jenkov.com/java-generics/implementing-iterable.html">http://tutorials.jenkov.com/java-generics/implementing-iterable.html</a></li>
+</ol>
+
+
+  </div>
+
+    <div class="date">
+       Written on November 28, 2016
+    </div>
+
+  
+  
+    
+      <h3>Related post</h3>
+      
+        
+        
+      
+        
+          <div>
+            <h5><a href="/blog/2016/11/27/Difference-between-an-Array-and-List/">Difference between an Array and List?</a></h5>
+          </div>
+          
+    
+  
+  
+  <hr>
+  
+<div class="comments">
+	<div id="disqus_thread"></div>
+	<script type="text/javascript">
+
+	    var disqus_shortname = 'taykangsheng';
+
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+  
+
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+<a href="mailto:kangsheng@gmail.com"><i class="svg-icon email"></i></a>
+<a href="https://www.facebook.com/TayKangSheng"><i class="svg-icon facebook"></i></a>
+
+<a href="https://github.com/TayKangSheng"><i class="svg-icon github"></i></a>
+<a href="https://instagram.com/kangsterchikenzster"><i class="svg-icon instagram"></i></a>
+
+
+
+<a href="https://www.twitter.com/TayKangSheng"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
