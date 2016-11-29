@@ -3,21 +3,22 @@ import java.util.ArrayList;
 
 
 public class MaxHeap {
-	private static ArrayList<Integer> heap = new ArrayList<Integer>();
+	private ArrayList<Integer> heap;
 	
 	public static void main(String args[]){
 		int[] test = {4,1,3,2,16,9,10,14,8,7};
+		MaxHeap heap = new MaxHeap();
 		System.out.println("---build_max_heap(test)---");
-		build_max_heap(test);
+		heap.build_max_heap(test);
 		System.out.println("results: "+heap);
 		System.out.println("---insert(17)---");
-		insert(17);
+		heap.insert(17);
 		System.out.println("results: "+heap);
 		System.out.println("---extract_max()---");
-		extract_max();
+		heap.extract_max();
 		System.out.println("results: "+heap);
 		System.out.println("---heapsort()---");
-		int[] sorted = heapsort();
+		int[] sorted = heap.heapsort();
 		System.out.print("results: [");
 		for (int i=0 ; i<sorted.length-1 ; i++){
 			System.out.print(sorted[i]+", ");
@@ -25,7 +26,11 @@ public class MaxHeap {
 		System.out.println(sorted[sorted.length-1]+"]");
 	}
 	
-	public static boolean max_heapify(int index){
+	public MaxHeap(){
+		heap = new ArrayList<Integer>();
+	}
+	
+	public void max_heapify(int index){
 		int left_index = (index*2);
 		int right_index = (index*2)+1;
 		int largest_index;
@@ -45,10 +50,9 @@ public class MaxHeap {
 			heap.set(index, temp);
 			max_heapify(largest_index);
 		}
-		return true;
 	}
 	
-	public static boolean build_max_heap(int[] array){
+	public void build_max_heap(int[] array){
 		heap.add(null); // This is to ensure that the index of the first element is 1;
 		for (int i=0 ; i<array.length ; i++){
 			heap.add(array[i]);
@@ -56,10 +60,9 @@ public class MaxHeap {
 		for (int i=heap.size()/2; i>0 ; i--){
 			max_heapify(i);
 		}
-		return true;
 	}
 	
-	public static boolean insert(int value){
+	public void insert(int value){
 		heap.add(value);
 		int current_index = heap.size()-1;
 		while (current_index>1){
@@ -73,10 +76,9 @@ public class MaxHeap {
 				break;
 			}
 		}
-		return true;
 	}
 	
-	public static int extract_max(){
+	public int extract_max(){
 		if (heap.size() <= 2){
 			return heap.remove(1);
 		} else {
@@ -89,7 +91,7 @@ public class MaxHeap {
 		}
 	}
 	
-	public static int[] heapsort(){
+	public int[] heapsort(){
 		int[] sorted_array = new int[heap.size()-1];
 		for (int i=0 ; i<sorted_array.length ; i++){
 			sorted_array[i] = extract_max();
