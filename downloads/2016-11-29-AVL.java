@@ -130,11 +130,9 @@ public class AVL<T extends Comparable<T>>{
 		}
 		if ( compare( toInsert, p.data ) > 0 ){
 			p.right = insert(p.right, toInsert);
-//			p = rebalance_right( p );
 			p = rebalance( p );
 		} else {
 			p.left = insert(p.left, toInsert);
-//			p = rebalance_left( p );
 			p = rebalance( p );
 		}
 		return p;
