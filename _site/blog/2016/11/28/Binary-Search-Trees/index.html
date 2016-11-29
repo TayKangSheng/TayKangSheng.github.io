@@ -105,8 +105,7 @@
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BST</span><span class="o">&lt;</span><span class="n">T</span> <span class="kd">extends</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&gt;{</span>
   <span class="c1">// Variables</span>
-  <span class="kd">private</span> <span class="n">Node</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">root</span><span class="o">;</span>
-  <span class="n">Comparator</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">comparator</span><span class="o">;</span>
+  <span class="o">...</span>
   <span class="c1">// Constructors</span>
   <span class="o">...</span>
   <span class="c1">// Helper Methods</span>
@@ -130,7 +129,7 @@
 
 <h4 id="constructors">Constructors</h4>
 
-<p>Constructors are the key method to initalise a class. As we have provided a Generic DataType for the BST class, we want to be able to make proper comparison for any DataType provided when using this BST class. Therefore we provide 2 ways of initialising this BST tree, one is without custom Comparator and the other with a customr Comparator.</p>
+<p>Constructors are the key method to initalise a class. As we have provided a Generic DataType for the BST class, we want to be able to make proper comparison for any DataType provided when using this BST class. Therefore we provide 2 ways of initialising this BST tree, one is without custom Comparator and the other with a custom Comparator.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">// Constructors</span>
 <span class="kd">public</span> <span class="nf">BST</span><span class="o">(){</span>
@@ -292,7 +291,7 @@
 
 <h3 id="tree-traversal">Tree Traversal</h3>
 
-<p>One key characteristic of a BST is that you can output the nodes with keys in a ascending order using pre-order traversal. Traversal is a process that visits all the nodes in the tree. Since a tree is not a linear data structure, we can visit all the nodes in the tree in 2 approaches. The first is depth first traversal and the second is breath first traversal.</p>
+<p>One key characteristic of a BST is that you can output the nodes with keys in a ascending order using In-order traversal. Traversal is a process that visits all the nodes in the tree. Since a tree is not a linear data structure, we can visit all the nodes in the tree in 2 approaches. The first is depth first traversal and the second is breath first traversal.</p>
 
 <p>There are 3 different kinds of depth first traversal:</p>
 
@@ -306,7 +305,7 @@
 
 <p>The black dots on the nodes are the order where the nodes are visited. These traversal can be represented in a single algorithm by assuming that we visit each node 3 times. An <strong>Euler tour</strong> is a walk around the binary tree where edges are treated as walls, which you cannot cross. During the walk around the tree, you will visit the nodes 3 times each. Following the left wall of each node, you will be visiting the nodes in the Pre-Order Traversal. Following the bottom wall of each node, you will be visiting the nodes in the In-Order Traversal. Following the right wall of each node, you will be visiting the nodes in the Post-Order Traversal.</p>
 
-<p><img src="/images/2016-11-29-TraversalEuler.bmp" alt="TreeTraversal" class="center-image" /></p>
+<p><img src="/images/2016-11-28-TraversalEuler.bmp" alt="TreeTraversal" class="center-image" /></p>
 
 <p>As for breath first traversal, there is only one kind which is the level order traversal. Which means that you visit the nodes level by level from the root node.</p>
 
@@ -508,11 +507,8 @@
       <h3>Related post</h3>
       
         
-        
-      
-        
           <div>
-            <h5><a href="/blog/2016/11/27/Difference-between-an-Array-and-List/">Difference between an Array and List?</a></h5>
+            <h5><a href="/blog/2016/11/29/AVL-Tree/">AVL Tree</a></h5>
           </div>
           
     

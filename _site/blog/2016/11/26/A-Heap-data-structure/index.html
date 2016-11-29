@@ -72,7 +72,7 @@
   <div class="entry">
     <p>In computer science, a heap is a specialized tree-based data structure that satisfies the heap property: If A is a parent node of B then the key (the value) of node A is ordered with respect to the key of node B with the same ordering applying across the heap. <a href="/downloads/2016-11-26-MaxHeap.java">1</a></p>
 
-<p>A Heap is basically an implementation of a <a href="https://en.wikipedia.org/wiki/Priority_queue">priority queue</a>, therefore before we jump into how does a heap work and what is it for, we should first understand what is a <strong>priority queue</strong>.</p>
+<p><strong>A Heap is basically an implementation of a <a href="https://en.wikipedia.org/wiki/Priority_queue">priority queue</a></strong>, therefore before we jump into how does a heap work and what is it for, we should first understand what is a <strong>priority queue</strong>.</p>
 
 <h2 id="what-is-a-priority-queue">What is a Priority Queue?</h2>
 
@@ -91,8 +91,12 @@ k(x) = key of element x</p>
 <p>A basic priority queue can be implemented using a array to store the elements. Note that the definition above clearly states that it is a set, which means that there can be no duplicate keys in the same set. Therefore in the case of a array, we do not allow for duplicate elements. Of course changes can be made at your own discretion if allowing for duplicate is something that will work for you.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PriorityQueue</span> <span class="o">{</span>
-  <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">elements</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
-	
+  <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">elements</span><span class="o">;</span>
+  
+  <span class="kd">public</span> <span class="nf">PriorityQueue</span><span class="o">(){</span>
+    <span class="n">elements</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
+  <span class="o">}</span>
+
   <span class="kd">public</span> <span class="kt">int</span> <span class="nf">Max</span><span class="o">(){</span>
     <span class="kt">int</span> <span class="n">largest_element</span> <span class="o">=</span> <span class="n">elements</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
     <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">elements</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
@@ -176,29 +180,26 @@ k(x) = key of element x</p>
   <li>If this index is different than i, exchange A[i] with largest key; then recurse on subtree with the root node of the recursed subtree as the previous A[i] key. This is to ensure that after the key is trickled down, we want to check recursively until there is no more violations of the Heap property.</li>
 </ol>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">max_heapify</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">max_heapify</span><span class="o">(</span><span class="kt">int</span> <span class="n">index</span><span class="o">){</span>
   <span class="kt">int</span> <span class="n">left_index</span> <span class="o">=</span> <span class="o">(</span><span class="n">index</span><span class="o">*</span><span class="mi">2</span><span class="o">);</span>
   <span class="kt">int</span> <span class="n">right_index</span> <span class="o">=</span> <span class="o">(</span><span class="n">index</span><span class="o">*</span><span class="mi">2</span><span class="o">)+</span><span class="mi">1</span><span class="o">;</span>
   <span class="kt">int</span> <span class="n">largest_index</span><span class="o">;</span>
-  <span class="k">if</span> <span class="o">(</span><span class="n">left_index</span> <span class="o">&lt;=</span> <span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> 
-  		<span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">left_index</span><span class="o">)&gt;</span><span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span> <span class="o">){</span>
+  <span class="k">if</span> <span class="o">(</span><span class="n">left_index</span> <span class="o">&lt;</span> <span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">left_index</span><span class="o">)&gt;</span><span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">)</span> <span class="o">){</span>
     <span class="n">largest_index</span> <span class="o">=</span> <span class="n">left_index</span><span class="o">;</span>
   <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
     <span class="n">largest_index</span> <span class="o">=</span> <span class="n">index</span><span class="o">;</span>
   <span class="o">}</span>
-
-  <span class="k">if</span> <span class="o">(</span><span class="n">right_index</span> <span class="o">&lt;=</span> <span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> 
-  		<span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">right_index</span><span class="o">)&gt;</span><span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">largest_index</span><span class="o">)</span> <span class="o">){</span>
+  
+  <span class="k">if</span> <span class="o">(</span><span class="n">right_index</span> <span class="o">&lt;</span> <span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">right_index</span><span class="o">)&gt;</span><span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">largest_index</span><span class="o">)</span> <span class="o">){</span>
     <span class="n">largest_index</span> <span class="o">=</span> <span class="n">right_index</span><span class="o">;</span>
   <span class="o">}</span>
-
+  
   <span class="k">if</span> <span class="o">(</span><span class="n">largest_index</span> <span class="o">!=</span> <span class="n">index</span><span class="o">){</span>
     <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">largest_index</span><span class="o">);</span>
     <span class="n">heap</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">largest_index</span><span class="o">,</span> <span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">));</span>
     <span class="n">heap</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">index</span><span class="o">,</span> <span class="n">temp</span><span class="o">);</span>
     <span class="n">max_heapify</span><span class="o">(</span><span class="n">largest_index</span><span class="o">);</span>
   <span class="o">}</span>
-  <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
 <span class="o">}</span></code></pre></figure>
 
 <h4 id="buildmaxheap">build_max_heap</h4>
@@ -212,7 +213,7 @@ k(x) = key of element x</p>
   <li>Loop backwards from node n/2 to the root node 1, and do max_heapify.</li>
 </ol>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">build_max_heap</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="o">){</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">build_max_heap</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="o">){</span>
   <span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span> <span class="c1">// This is to ensure that the index of the first element is 1;</span>
   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">array</span><span class="o">.</span><span class="na">length</span> <span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
     <span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
@@ -220,15 +221,13 @@ k(x) = key of element x</p>
   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()/</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">0</span> <span class="o">;</span> <span class="n">i</span><span class="o">--){</span>
     <span class="n">max_heapify</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
   <span class="o">}</span>
-  <span class="n">heap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
-  <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
 <span class="o">}</span></code></pre></figure>
 
 <h4 id="insert">insert</h4>
 
 <p>How do we insert an node in a heap yet not violating any heap property? The general idea is to insert the node at the end of the array, then recursively check whether the key of the parent node is bigger or smaller than the new node. If yes, switch the position of the parent node and the new node, then check the key of the new parent node of the new node. So we slowly trickle the node from the bottom up until it finds a place where it does not violate the Max_Heap property.</p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">insert</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">){</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">void</span> <span class="nf">insert</span><span class="o">(</span><span class="kt">int</span> <span class="n">value</span><span class="o">){</span>
   <span class="n">heap</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
   <span class="kt">int</span> <span class="n">current_index</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()-</span><span class="mi">1</span><span class="o">;</span>
   <span class="k">while</span> <span class="o">(</span><span class="n">current_index</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">){</span>
@@ -242,18 +241,15 @@ k(x) = key of element x</p>
       <span class="k">break</span><span class="o">;</span>
     <span class="o">}</span>
   <span class="o">}</span>
-  <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
 <span class="o">}</span></code></pre></figure>
 
 <h4 id="extractmax">extract_max</h4>
 
 <p>Now that we have implemented the <strong>max_heapify</strong> operation, we can use the <strong>max_heapify</strong> operation to extract the node with the largest key in the Heap. The idea is simple. First switch the position of the root node and the last node in the array. Now remove the original root node, and use <strong>max_heapify</strong> on the new root node. As the new root node is originally a leaf node, it will now trickle down again to the base while re-arranging the Heap into a new position which does not violate the Max Heap property.</p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">extract_max</span><span class="o">(){</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span> <span class="nf">extract_max</span><span class="o">(){</span>
   <span class="k">if</span> <span class="o">(</span><span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="o">){</span>
     <span class="k">return</span> <span class="n">heap</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-    <span class="c1">// Note that the first element is a place holder (null). </span>
-    <span class="c1">// This is to ensure the first element of the heap is at index 1.</span>
   <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
     <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
     <span class="kt">int</span> <span class="n">last_node</span> <span class="o">=</span> <span class="n">heap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()-</span><span class="mi">1</span><span class="o">);</span>
@@ -270,7 +266,7 @@ k(x) = key of element x</p>
 
 <p>Now that we have gone through the various operations of a Heap, implementing Heap sort is now trivial. We can simple call the <strong>extract_max</strong> operation n times to produce a sorted array.</p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">heapsort</span><span class="o">(){</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">heapsort</span><span class="o">(){</span>
   <span class="kt">int</span><span class="o">[]</span> <span class="n">sorted_array</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">heap</span><span class="o">.</span><span class="na">size</span><span class="o">()-</span><span class="mi">1</span><span class="o">];</span>
   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span> <span class="o">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">sorted_array</span><span class="o">.</span><span class="na">length</span> <span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
     <span class="n">sorted_array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">extract_max</span><span class="o">();</span>
@@ -350,7 +346,7 @@ k(x) = key of element x</p>
       
         
           <div>
-            <h5><a href="/blog/2016/11/28/Binary-Search-Trees/">Binary Search Trees</a></h5>
+            <h5><a href="/blog/2016/11/29/AVL-Tree/">AVL Tree</a></h5>
           </div>
           
     

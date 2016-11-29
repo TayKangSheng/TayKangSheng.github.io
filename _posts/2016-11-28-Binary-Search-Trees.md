@@ -39,8 +39,7 @@ This implementation that we are going to go through in this article is a BST wit
 {% highlight Java %}
 public class BST<T extends Comparable<T>>{
   // Variables
-  private Node<T> root;
-  Comparator<T> comparator;
+  ...
   // Constructors
   ...
   // Helper Methods
@@ -237,7 +236,7 @@ private Node<T> delete(Node<T> parent, T toDelete){
 
 ### Tree Traversal
 
-One key characteristic of a BST is that you can output the nodes with keys in a ascending order using pre-order traversal. Traversal is a process that visits all the nodes in the tree. Since a tree is not a linear data structure, we can visit all the nodes in the tree in 2 approaches. The first is depth first traversal and the second is breath first traversal. 
+One key characteristic of a BST is that you can output the nodes with keys in a ascending order using In-order traversal. Traversal is a process that visits all the nodes in the tree. Since a tree is not a linear data structure, we can visit all the nodes in the tree in 2 approaches. The first is depth first traversal and the second is breath first traversal. 
 
 There are 3 different kinds of depth first traversal:
 
@@ -249,7 +248,7 @@ There are 3 different kinds of depth first traversal:
 
 The black dots on the nodes are the order where the nodes are visited. These traversal can be represented in a single algorithm by assuming that we visit each node 3 times. An **Euler tour** is a walk around the binary tree where edges are treated as walls, which you cannot cross. During the walk around the tree, you will visit the nodes 3 times each. Following the left wall of each node, you will be visiting the nodes in the Pre-Order Traversal. Following the bottom wall of each node, you will be visiting the nodes in the In-Order Traversal. Following the right wall of each node, you will be visiting the nodes in the Post-Order Traversal.
 
-![TreeTraversal]({{ site.baseurl }}/images/2016-11-29-TraversalEuler.bmp){: .center-image }
+![TreeTraversal]({{ site.baseurl }}/images/2016-11-28-TraversalEuler.bmp){: .center-image }
 
 As for breath first traversal, there is only one kind which is the level order traversal. Which means that you visit the nodes level by level from the root node. 
 
@@ -410,42 +409,3 @@ I have learnt alot writing this article and implementing the BST class. My code 
 3. <http://tutorials.jenkov.com/java-generics/implementing-iterable.html>
 
 [1]:{{ site.baseurl }}/downloads/2016-11-28-BST.java
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
