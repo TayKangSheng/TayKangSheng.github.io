@@ -65,7 +65,7 @@ Due to the recursive nature of the data structure, all operations always have to
 
 #### Constructors
 
-Constructors are the key method to initalise a class. As we have provided a Generic DataType for the BST class, we want to be able to make proper comparison for any DataType provided when using this BST class. Therefore we provide 2 ways of initialising this BST tree, one is without custom Comparator and the other with a customr Comparator.
+Constructors are the key method to initalise a class. As we have provided a Generic DataType for the BST class, we want to be able to make proper comparison for any DataType provided when using this BST class. Therefore we provide 2 ways of initialising this BST tree, one is without custom Comparator and the other with a custom Comparator.
 
 {% highlight Java %}
 // Constructors

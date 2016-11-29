@@ -7,7 +7,7 @@ categories: Programming
 
 In computer science, a heap is a specialized tree-based data structure that satisfies the heap property: If A is a parent node of B then the key (the value) of node A is ordered with respect to the key of node B with the same ordering applying across the heap. [1]
 
-A Heap is basically an implementation of a [priority queue](https://en.wikipedia.org/wiki/Priority_queue), therefore before we jump into how does a heap work and what is it for, we should first understand what is a **priority queue**.
+**A Heap is basically an implementation of a [priority queue](https://en.wikipedia.org/wiki/Priority_queue)**, therefore before we jump into how does a heap work and what is it for, we should first understand what is a **priority queue**.
 
 ## What is a Priority Queue?
 
@@ -25,8 +25,12 @@ A basic priority queue can be implemented using a array to store the elements. N
 
 {% highlight java %}
 public class PriorityQueue {
-  private ArrayList<Integer> elements = new ArrayList<Integer>();
-	
+  private ArrayList<Integer> elements;
+  
+  public PriorityQueue(){
+    elements = new ArrayList<Integer>();
+  }
+
   public int Max(){
     int largest_element = elements.get(0);
     for (int i=1; i<elements.size(); i++){
@@ -104,29 +108,26 @@ Therefore, there are 2 main steps in this operations:
 2. If this index is different than i, exchange A[i] with largest key; then recurse on subtree with the root node of the recursed subtree as the previous A[i] key. This is to ensure that after the key is trickled down, we want to check recursively until there is no more violations of the Heap property.
 
 {% highlight java %}
-public static boolean max_heapify(int index){
+public void max_heapify(int index){
   int left_index = (index*2);
   int right_index = (index*2)+1;
   int largest_index;
-  if (left_index <= heap.size() 
-  		&& heap.get(left_index)>heap.get(index) ){
+  if (left_index < heap.size() && heap.get(left_index)>heap.get(index) ){
     largest_index = left_index;
   } else {
     largest_index = index;
   }
-
-  if (right_index <= heap.size() 
-  		&& heap.get(right_index)>heap.get(largest_index) ){
+  
+  if (right_index < heap.size() && heap.get(right_index)>heap.get(largest_index) ){
     largest_index = right_index;
   }
-
+  
   if (largest_index != index){
     int temp = heap.get(largest_index);
     heap.set(largest_index, heap.get(index));
     heap.set(index, temp);
     max_heapify(largest_index);
   }
-  return true;
 }
 {% endhighlight %}
 
@@ -140,7 +141,7 @@ Therefore this operation only consist of 1 step:
 2. Loop backwards from node n/2 to the root node 1, and do max_heapify.
 
 {% highlight java %}
-public static boolean build_max_heap(int[] array){
+public void build_max_heap(int[] array){
   heap.add(null); // This is to ensure that the index of the first element is 1;
   for (int i=0 ; i<array.length ; i++){
     heap.add(array[i]);
@@ -148,10 +149,7 @@ public static boolean build_max_heap(int[] array){
   for (int i=heap.size()/2; i>0 ; i--){
     max_heapify(i);
   }
-  heap.remove(null);
-  return true;
 }
-
 {% endhighlight %}
 
 #### insert
@@ -159,7 +157,7 @@ public static boolean build_max_heap(int[] array){
 How do we insert an node in a heap yet not violating any heap property? The general idea is to insert the node at the end of the array, then recursively check whether the key of the parent node is bigger or smaller than the new node. If yes, switch the position of the parent node and the new node, then check the key of the new parent node of the new node. So we slowly trickle the node from the bottom up until it finds a place where it does not violate the Max_Heap property.
 
 {% highlight java %}
-public static boolean insert(int value){
+public void insert(int value){
   heap.add(value);
   int current_index = heap.size()-1;
   while (current_index>1){
@@ -173,7 +171,6 @@ public static boolean insert(int value){
       break;
     }
   }
-  return true;
 }
 {% endhighlight %} 
 
@@ -182,11 +179,9 @@ public static boolean insert(int value){
 Now that we have implemented the **max_heapify** operation, we can use the **max_heapify** operation to extract the node with the largest key in the Heap. The idea is simple. First switch the position of the root node and the last node in the array. Now remove the original root node, and use **max_heapify** on the new root node. As the new root node is originally a leaf node, it will now trickle down again to the base while re-arranging the Heap into a new position which does not violate the Max Heap property.
 
 {% highlight java %}
-public static int extract_max(){
+public int extract_max(){
   if (heap.size() <= 2){
     return heap.remove(1);
-    // Note that the first element is a place holder (null). 
-    // This is to ensure the first element of the heap is at index 1.
   } else {
     int max = heap.get(1);
     int last_node = heap.get(heap.size()-1);
@@ -205,7 +200,7 @@ public static int extract_max(){
 Now that we have gone through the various operations of a Heap, implementing Heap sort is now trivial. We can simple call the **extract_max** operation n times to produce a sorted array. 
 
 {% highlight java %}
-public static int[] heapsort(){
+public int[] heapsort(){
   int[] sorted_array = new int[heap.size()-1];
   for (int i=0 ; i<sorted_array.length ; i++){
     sorted_array[i] = extract_max();
