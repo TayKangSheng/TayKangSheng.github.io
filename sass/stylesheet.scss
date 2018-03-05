@@ -1,0 +1,78 @@
+@import 'fipps-webfontkit/stylesheet.css';
+
+$base-font-size: 20px;
+$base-font-family: 'fippsregular', courier, serif;
+
+// Colours
+$color-font: #000000;
+$color-background: #71B48D;
+$color-primary: #404E7C;
+$color-secondary: #251F47;
+$color-tertiary: #86CB92;
+
+
+html {
+    font-family: $base-font-family;
+    font-size: $base-font-size;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: auto 0;
+    background-color: $color-background;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #loader {
+        display: block;
+
+        font-size: 2em;
+    }
+
+    #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        display: flex;
+        justify-content: flex-end;
+
+        #links {
+            padding: 0 1vh 1vh 0;
+
+            a {
+                text-decoration: none;
+            }
+
+            /* unvisited link */
+            a:link {
+                color: $color-primary;
+            }
+
+            /* visited link */
+            a:visited {
+                color: $color-primary;
+            }
+
+            /* mouse over link */
+            a:hover {
+                color: $color-secondary;
+            }
+
+            /* selected link */
+            a:active {
+                color: $color-primary;
+            }
+        }
+    }
+
+    .visible {
+        visibility: visible;
+    }
+
+    .hidden {
+        visibility: hidden;
+    }
+}

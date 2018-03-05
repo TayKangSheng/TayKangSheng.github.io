@@ -1,0 +1,44 @@
+@import url(fipps-webfontkit/stylesheet.css);
+html {
+  font-family: "fippsregular", courier, serif;
+  font-size: 20px; }
+
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: auto 0;
+  background-color: #71B48D;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  body #loader {
+    display: block;
+    font-size: 2em; }
+  body #footer {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: flex-end; }
+    body #footer #links {
+      padding: 0 1vh 1vh 0;
+      /* unvisited link */
+      /* visited link */
+      /* mouse over link */
+      /* selected link */ }
+      body #footer #links a {
+        text-decoration: none; }
+      body #footer #links a:link {
+        color: #404E7C; }
+      body #footer #links a:visited {
+        color: #404E7C; }
+      body #footer #links a:hover {
+        color: #251F47; }
+      body #footer #links a:active {
+        color: #404E7C; }
+  body .visible {
+    visibility: visible; }
+  body .hidden {
+    visibility: hidden; }
+
+/*# sourceMappingURL=stylesheet.css.map */
