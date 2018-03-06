@@ -21,6 +21,8 @@ body {
     height: 100vh;
     margin: auto 0;
     background-color: $color-background;
+    background-image: url('/css/body-bg.svg');
+    background-size: 580px auto;
 
     display: flex;
     justify-content: center;

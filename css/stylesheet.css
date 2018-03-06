@@ -8,6 +8,8 @@ body {
   height: 100vh;
   margin: auto 0;
   background-color: #71B48D;
+  background-image: url("/css/body-bg.svg");
+  background-size: 580px auto;
   display: flex;
   justify-content: center;
   align-items: center; }
