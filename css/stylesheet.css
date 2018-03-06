@@ -18,7 +18,7 @@ body {
     font-size: 2em; }
   body #footer {
     position: absolute;
-    bottom: 0;
+    bottom: 0vh;
     width: 100vw;
     display: flex;
     justify-content: flex-end; }
