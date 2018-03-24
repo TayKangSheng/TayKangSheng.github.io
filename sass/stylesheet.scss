@@ -30,12 +30,13 @@ body {
 
     #loader {
         display: block;
+        position: fixed;
 
         font-size: 2em;
     }
 
     #footer {
-        position: absolute;
+        position: fixed;
         bottom: 0vh;
         width: 100vw;
         display: flex;
