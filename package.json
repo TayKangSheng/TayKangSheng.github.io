@@ -1,5 +1,18 @@
 {
-  "dependencies": {
+  "name": "www.taykangsheng.com",
+  "description": "Personal Website",
+  "version": "1.0.0",
+  "devDependencies": {
     "http-server": "^0.11.1"
-  }
+  },
+  "scripts": {
+    "dev": "http-server ./ -d false"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/TayKangSheng/taykangsheng.github.io.git"
+    },
+    "keywords": [],
+    "author": "taykangsheng",
+    "license": "MIT"
 }
