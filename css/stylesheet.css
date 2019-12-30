@@ -24,6 +24,8 @@ body {
     display: flex;
     justify-content: flex-end; }
     body #footer #links {
+      display: flex;
+      flex-direction: column;
       padding: 0 1vh 1vh 0;
       /* unvisited link */
       /* visited link */

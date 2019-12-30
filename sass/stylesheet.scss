@@ -43,6 +43,8 @@ body {
         justify-content: flex-end;
 
         #links {
+            display: flex;
+            flex-direction: column;
             padding: 0 1vh 1vh 0;
 
             a {
