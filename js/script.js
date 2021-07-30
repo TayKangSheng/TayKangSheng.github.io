@@ -13,26 +13,6 @@ window.onload = function(){
         update_loader();
     }, 500);
 
-    var time_elasped_update = setInterval(function(){
-        if (seconds_elapsed % 5 == 0 && seconds_elapsed !== 0) {
-            console.log(`You have been waiting for ${seconds_elapsed} seconds. :)`)
-        }
-    }, 1000);
-
-    var encouragement_messages = [
-        `Hang in there! We're almost there.`,
-        `Don't give up on me! Just a little bit more.`,
-        `Just a few seconds more!!`,
-        `Almost! Almost!!!`
-    ]
-
-    var time_elasped_encouragement = this.setInterval(function () {
-        var rand = Math.floor(Math.random() * encouragement_messages.length)
-        if (seconds_elapsed % 7 == 0 && seconds_elapsed !== 0) {
-            console.log(encouragement_messages[rand])
-        }
-    }, 1000);
-
     function update_loader(){
         var millis = Date.now() - start_time;
 
