@@ -9,9 +9,9 @@ window.onload = function(){
         document.getElementById("dot-four"),
     ];
 
-    var update_loader_loop = setInterval(function(){
-        update_loader();
-    }, 500);
+    // var update_loader_loop = setInterval(function(){
+    //     update_loader();
+    // }, 500);
 
     function update_loader(){
         var millis = Date.now() - start_time;

@@ -13,6 +13,37 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; }
+  body #link-pop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em; }
+    body #link-pop .icon {
+      position: relative;
+      background-color: #f0f0f0;
+      margin: 0.5em;
+      padding: 1em;
+      border-radius: 0.25em;
+      max-height: 2em;
+      max-width: 2em;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); }
+      body #link-pop .icon img {
+        display: block;
+        aspect-ratio: 1;
+        height: 1em;
+        width: 1em; }
+      body #link-pop .icon.wip:before {
+        content: "Coming Soon!";
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 0.15em; }
+    body #link-pop .icon:hover {
+      padding: 0.75em; }
+      body #link-pop .icon:hover img {
+        height: 1.5em;
+        width: 1.5em; }
   body #loader {
     display: block;
     position: fixed;
