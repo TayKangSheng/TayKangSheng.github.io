@@ -34,7 +34,7 @@ body {
         height: 1em;
         width: 1em; }
       body #link-pop .icon.wip:before {
-        content: "Coming Soon!";
+        content: "Coming soon!";
         position: absolute;
         bottom: 10px;
         right: 10px;
