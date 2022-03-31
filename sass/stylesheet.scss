@@ -44,6 +44,10 @@ body {
             border-radius: 0.5em;
             max-height: 2em;
             max-width: 2em;
+            margin: 10px;
+
+            background-color: rgba(220, 220, 220, 1);
+            border: solid 1px black;
 
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -51,6 +55,14 @@ body {
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
+
+            &:hover {
+                box-shadow: 2px 2px black;
+            }
+
+            &:not([href]) {
+                cursor: wait;
+            }
 
             .description {
                 position: absolute;

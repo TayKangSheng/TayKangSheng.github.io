@@ -27,12 +27,19 @@ body {
       border-radius: 0.5em;
       max-height: 2em;
       max-width: 2em;
+      margin: 10px;
+      background-color: gainsboro;
+      border: solid 1px black;
       -webkit-touch-callout: none;
       -webkit-user-select: none;
       -khtml-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none; }
+      body #link-pop .icon:hover {
+        box-shadow: 2px 2px black; }
+      body #link-pop .icon:not([href]) {
+        cursor: wait; }
       body #link-pop .icon .description {
         position: absolute;
         bottom: 10px;
