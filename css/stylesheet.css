@@ -28,7 +28,7 @@ body {
       max-height: 2em;
       max-width: 2em;
       margin: 10px;
-      background-color: gainsboro;
+      background-color: #e6e6e6;
       border: outset 1px white;
       box-shadow: 2px 2px black;
       -webkit-touch-callout: none;
@@ -40,7 +40,7 @@ body {
       body #link-pop .icon:hover {
         box-shadow: -1px -1px black;
         border: inset 1px white;
-        background-color: #e6e6e6; }
+        background-color: gainsboro; }
       body #link-pop .icon:not([href]) {
         cursor: wait; }
       body #link-pop .icon .description {
