@@ -7,12 +7,51 @@ body {
   width: 100vw;
   height: 100vh;
   margin: auto 0;
-  background-color: #71B48D;
-  background-image: url("/css/body-bg.svg");
-  background-size: 580px auto;
+  background-color: black;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  /* Replaced with #link-pop-2 */ }
+  body #link-pop-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    margin-bottom: 100px;
+    /* Manually vertical align */ }
+    body #link-pop-2 .icon {
+      position: relative;
+      padding: 0.75em;
+      border-radius: 0.5em;
+      max-height: 2em;
+      max-width: 2em;
+      margin: 10px;
+      border: solid 2px teal;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none; }
+      body #link-pop-2 .icon:hover {
+        border: solid 2px #00cfcf; }
+      body #link-pop-2 .icon:not([href]) {
+        cursor: wait; }
+      body #link-pop-2 .icon .description {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 0.18em;
+        color: black;
+        text-decoration: none; }
+      body #link-pop-2 .icon img {
+        display: block;
+        aspect-ratio: 1;
+        height: 1.5em;
+        width: 1.5em; }
   body #link-pop {
     display: flex;
     flex-wrap: wrap;
@@ -78,13 +117,13 @@ body {
       body #footer #links a {
         text-decoration: none; }
       body #footer #links a:link {
-        color: #404E7C; }
+        color: teal; }
       body #footer #links a:visited {
-        color: #404E7C; }
+        color: teal; }
       body #footer #links a:hover {
-        color: #251F47; }
+        color: #00cfcf; }
       body #footer #links a:active {
-        color: #404E7C; }
+        color: teal; }
   body .visible {
     visibility: visible; }
   body .hidden {
