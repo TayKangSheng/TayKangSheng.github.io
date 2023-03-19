@@ -33,9 +33,12 @@ body {
       -khtml-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
-      user-select: none; }
+      user-select: none;
+      color: teal; }
       body #link-pop-2 .icon:hover {
-        border: solid 2px #00cfcf; }
+        border: solid 2px #00cfcf;
+        color: black;
+        background-color: teal; }
       body #link-pop-2 .icon:not([href]) {
         cursor: wait; }
       body #link-pop-2 .icon .description {
@@ -45,7 +48,6 @@ body {
         right: 0;
         text-align: center;
         font-size: 0.18em;
-        color: black;
         text-decoration: none; }
       body #link-pop-2 .icon img {
         display: block;
