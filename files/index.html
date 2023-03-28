@@ -14,7 +14,7 @@
   <table>
     <thead></thead>
     <tbody>
-      <tr><td><a href="/">Back</a></td></tr>
+      <tr><td><a href="/">..</a></td></tr>
     </tbody>
   </table>
 
@@ -27,13 +27,15 @@
       trElem.appendChild(tdElem)
       tdElem.appendChild(aElem)
       aElem.appendChild(textElem)
+      aElem.target = "_blank"
 
       return trElem
     }
 
     let tBody = document.getElementsByTagName("tbody")[0]
     let indexTable = [
-      ["/files/resume.pdf", "Resume"]
+      ["/files/resume.pdf", "Resume"],
+      ["https://www.artofmanliness.com/skills/how-to/sewing-on-a-button/", "How to sew a button"]
     ]
     indexTable.forEach(function(i) {
       tBody.appendChild(
