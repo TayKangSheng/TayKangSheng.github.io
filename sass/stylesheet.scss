@@ -4,7 +4,7 @@ $base-font-size: 20px;
 $base-font-family: 'fippsregular', courier, serif;
 
 // Colours
-$color-font: #000000;
+$color-font: teal;
 $color-background: #71B48D;
 $color-primary: teal;
 $color-primary-highlight: rgb(0, 207, 207);
@@ -17,6 +17,7 @@ $color-tertiary: #86CB92;
 html {
     font-family: $base-font-family;
     font-size: $base-font-size;
+    color: $color-font;
 }
 
 body {

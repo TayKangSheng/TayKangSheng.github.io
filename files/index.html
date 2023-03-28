@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Kang Sheng</title>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <!-- <link rel="stylesheet" href="/css/stylesheet.css">
+  <script src="/js/script.js"></script> -->
+</head>
+<body>
+  <table>
+    <thead></thead>
+    <tbody>
+      <tr><td><a href="/">Back</a></td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    function createTr(link, description) {
+      let trElem = document.createElement('tr')
+      let tdElem = document.createElement('td')
+      let aElem = Object.assign(document.createElement('a'), { href: link })
+      let textElem = document.createTextNode(description)
+      trElem.appendChild(tdElem)
+      tdElem.appendChild(aElem)
+      aElem.appendChild(textElem)
+
+      return trElem
+    }
+
+    let tBody = document.getElementsByTagName("tbody")[0]
+    let indexTable = [
+      ["/files/resume.pdf", "Resume"]
+    ]
+    indexTable.forEach(function(i) {
+      tBody.appendChild(
+        createTr(i[0], i[1])
+      )
+    })
+  </script>
+</body>
+</html>
