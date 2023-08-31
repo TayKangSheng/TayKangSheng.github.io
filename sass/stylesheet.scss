@@ -43,10 +43,15 @@ body {
         .icon {
             position: relative;
 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
             padding: 0.75em;
             border-radius: 0.5em;
-            max-height: 2em;
-            max-width: 2em;
+            height: 2em;
+            width: 2em;
             margin: 10px;
 
             border: solid 2px $color-primary;
@@ -76,16 +81,14 @@ body {
                 left: 0;
                 right: 0;
                 text-align: center;
-                font-size: 0.18em;
-                // color: black; // don't want to show the text
+                font-size: 0.2em;
                 text-decoration: none;
             }
 
             img {
                 display: block;
-                aspect-ratio: 1;
-                height: 1.5em;
-                width: 1.5em;
+                max-height: 1.5em;
+                max-width: 1.5em;
             }
         }
     }
